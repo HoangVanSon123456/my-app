@@ -165,14 +165,14 @@ export default function Header() {
             <li className="nav-item">
               <a className="" href="/GiaoVien">
                 <span className="menu-title text-truncate" data-i18n="Email">
-                  GiaoVien
+                  Giáo Viên
                 </span>
               </a>
             </li>
             <li className="nav-item">
               <a className="" href="/GiaoVien">
                 <span className="menu-title text-truncate" data-i18n="Email">
-                  GiaoVien
+                  Thông Báo
                 </span>
               </a>
             </li>

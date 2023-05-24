@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { PrivateRoute } from "components/common/PrivateRoute";
 import GiaoVien from "features/user/pages/GiaoVien";
 import { Provider } from "react-redux";
@@ -25,7 +25,9 @@ export default function RouterView() {
             path="/GiaoVien"
             element={
               <PrivateRoute>
-                <GiaoVien />
+                <Suspense>
+                  <GiaoVien />
+                </Suspense>
               </PrivateRoute>
             }
           ></Route>
@@ -33,7 +35,9 @@ export default function RouterView() {
             path="/GiaoVien/create"
             element={
               <PrivateRoute>
-                <ThemUser />
+                <Suspense>
+                  <ThemUser />
+                </Suspense>
               </PrivateRoute>
             }
           ></Route>
@@ -41,7 +45,9 @@ export default function RouterView() {
             path="/GiaoVien/update/:id"
             element={
               <PrivateRoute>
-                <EditUser />
+                <Suspense>
+                  <EditUser />
+                </Suspense>
               </PrivateRoute>
             }
           ></Route>

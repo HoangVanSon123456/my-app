@@ -10,6 +10,7 @@ import { Eye, EyeOff } from "react-feather";
 
 export default function ThemGiaoVien() {
   const [showPass, setShowPass] = useState(false);
+  const [loadingUpdate, setLoadingUpdate] = useState(false);
   const navigate = useNavigate();
   const validationSchema = Yup.object({
     name: Yup.string().required("Please Enter your name"),
@@ -34,6 +35,7 @@ export default function ThemGiaoVien() {
   });
 
   const saveOrUpdateUser = (data: User) => {
+    setLoadingUpdate(true);
     UserService.create(data)
       .then((response) => {
         console.log(response);
@@ -42,6 +44,7 @@ export default function ThemGiaoVien() {
       .catch((error) => {
         console.log(error);
       });
+    setLoadingUpdate(false);
   };
 
   const handleBack = () => {
@@ -97,9 +100,9 @@ export default function ThemGiaoVien() {
           </label>
           <div className="input-group">
             <input
-              {...register("usePass")}
+              {...register("password")}
               className={classNames("form-control", "form-control-merge", {
-                error: Boolean(errors.usePass?.message),
+                error: Boolean(errors.password?.message),
               })}
               type={showPass ? "text" : "password"}
               tabIndex={2}
@@ -160,19 +163,6 @@ export default function ThemGiaoVien() {
           >
             <option value="nam">Nam</option>
             <option value="nu">Nữ</option>
-          </select>
-        </div>
-        <div className="col-md-3">
-          <label htmlFor="roles" className="form-label d-block text-start">
-            Vai trò
-          </label>
-          <select
-            {...register("role")}
-            className="form-select"
-            aria-label="Default select example"
-          >
-            <option value="admin">Admin</option>
-            <option value="member">Member</option>
           </select>
         </div>
         <div className="col-12 text-end">
