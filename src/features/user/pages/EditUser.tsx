@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import UserService from "services/UserService";
 import classNames from "classnames";
-import { Eye, EyeOff } from "react-feather";
 import User from "types/User";
 export default function SuaGiaoVien() {
-  const [showPass, setShowPass] = useState(false);
   const {
     register,
     handleSubmit,
@@ -100,28 +98,6 @@ export default function SuaGiaoVien() {
             />
           </div>
           <div className="col-md-3">
-            <label htmlFor="password" className="form-label d-block text-start">
-              Mật Khẩu
-            </label>
-            <div className="input-group">
-              <input
-                {...register("usePass")}
-                className={classNames("form-control", "form-control-merge", {
-                  error: Boolean(errors.usePass?.message),
-                })}
-                type={showPass ? "text" : "password"}
-                tabIndex={2}
-              />
-              <span
-                className="input-group-text cursor-pointer"
-                onClick={() => setShowPass((prevShowPass) => !prevShowPass)}
-              >
-                {showPass ? <EyeOff size={14} /> : <Eye size={14} />}
-              </span>
-            </div>
-          </div>
-
-          <div className="col-md-3">
             <label htmlFor="phone" className="form-label d-block text-start">
               Số Điện Thoại
             </label>
@@ -168,19 +144,6 @@ export default function SuaGiaoVien() {
             >
               <option value="nam">Nam</option>
               <option value="nu">Nữ</option>
-            </select>
-          </div>
-          <div className="col-md-3">
-            <label htmlFor="roles" className="form-label d-block text-start">
-              Vai trò
-            </label>
-            <select
-              {...register("role")}
-              className="form-select"
-              aria-label="Default select example"
-            >
-              <option value="admin">Admin</option>
-              <option value="member">Member</option>
             </select>
           </div>
           <div className="col-12 text-end">

@@ -43,12 +43,10 @@ export default function ListGiaoVien({ listUsers, handleDelete }: IProps) {
             <TableCell align="center">Ten</TableCell>
             <TableCell align="center">Ho va Ten</TableCell>
             <TableCell align="center">Dia chi</TableCell>
-            <TableCell align="center">Mat Khau</TableCell>
             <TableCell align="center">Email</TableCell>
             <TableCell align="center">Tuoi</TableCell>
             <TableCell align="center">So Dien Thoai</TableCell>
             <TableCell align="center">Gioi Tinh</TableCell>
-            <TableCell align="center">Vai trò</TableCell>
             <TableCell align="center">Ảnh</TableCell>
             <TableCell align="center">Action</TableCell>
           </TableRow>
@@ -60,12 +58,10 @@ export default function ListGiaoVien({ listUsers, handleDelete }: IProps) {
               <TableCell align="center">{item?.name}</TableCell>
               <TableCell align="center">{item?.useName}</TableCell>
               <TableCell align="center">{item?.address}</TableCell>
-              <TableCell align="center">{item?.password}</TableCell>
               <TableCell align="center">{item?.email}</TableCell>
               <TableCell align="center">{item?.age}</TableCell>
               <TableCell align="center">{item?.phone}</TableCell>
               <TableCell align="center">{item?.gender}</TableCell>
-              <TableCell align="center">{item?.role}</TableCell>
               <TableCell align="center">{item?.email}</TableCell>
               <TableCell align="center">
                 <Button

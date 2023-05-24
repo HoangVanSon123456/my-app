@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthService from "services/AuthService";
 import User from "types/User";
 import { HttpStatusCode } from "axios";
+import { setLocalStorage } from "configs/localStorage";
+import { AUTH_KEYS } from "configs/auth";
 
 export default function LoginFrom() {
   const [showPass, setShowPass] = useState(false);
@@ -33,8 +35,8 @@ export default function LoginFrom() {
   const submitLogin = async (data: User) => {
     await AuthService.login(data.email!, data.password!).then((res) => {
       if (HttpStatusCode.Ok === 200) {
-        localStorage.setItem("token", res.data.accessToken);
-        navigator("/");
+        setLocalStorage(AUTH_KEYS.ACCESS_TOKEN, res.data.accessToken || "");
+        navigator("/GiaoVien");
       }
     });
   };
