@@ -30,6 +30,16 @@ export default function Nav() {
             </a>
           </li>
           <li className="nav-item">
+            <a className="" href="/hocphan">
+              <span
+                className="menu-title text-truncate"
+                data-i18n="notification"
+              >
+                Học Phần
+              </span>
+            </a>
+          </li>
+          <li className="nav-item">
             <a className="" href="/chuongtrinhdaotao">
               <span
                 className="menu-title text-truncate"

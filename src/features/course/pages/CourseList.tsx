@@ -18,7 +18,7 @@ export default function CourseList() {
   }, []);
 
   const handleClickOpen = () => {
-    navigate("/course/create");
+    navigate("/hocphan/create");
   };
 
   const getList = async () => {

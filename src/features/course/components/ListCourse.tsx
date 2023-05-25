@@ -18,7 +18,7 @@ export default function ListCourse({ listCourse, handleDelete }: IProps) {
   const navigate = useNavigate();
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
-    navigate(`/course/update/${id}`);
+    navigate(`/hocphan/update/${id}`);
     console.log(id);
   };
 
@@ -33,14 +33,20 @@ export default function ListCourse({ listCourse, handleDelete }: IProps) {
                   <tr>
                     <th>Mã học phần</th>
                     <th>Tên học phần</th>
+                    <th>Số tín chỉ</th>
+                    <th>Lớp lý thuyết</th>
+                    <th>Lớp thực hành</th>
                     <th>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
                   {listCourse.map((course: Course, index: number) => (
                     <tr key={course.id}>
-                      <td>{course.id}</td>
+                      <td>{course.code}</td>
                       <td>{course.name}</td>
+                      <td>{course.creditName}</td>
+                      <td>{course.theoryClass}</td>
+                      <td>{course.practicalClass}</td>
                       <td className="text-left">
                         <div>
                           <button

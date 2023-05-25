@@ -16,6 +16,9 @@ import SuaStudyScore from "features/study score/pages/SuaStudyScore";
 import ThemStudyScore from "features/study score/pages/ThemStudyScore";
 import ThemTuition from "features/tuition/pages/ThemTuition";
 import SuaTuition from "features/tuition/pages/SuaTuition";
+import CourseList from "features/course/pages/CourseList";
+import ThemCourse from "features/course/pages/ThemCourse";
+import SuaCourse from "features/course/pages/SuaCourse";
 
 const ThemUser = React.lazy(() => import("features/user/pages/ThemUser"));
 const EditUser = React.lazy(() => import("features/user/pages/EditUser"));
@@ -179,6 +182,36 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <SuaStudyScore />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocphan"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <CourseList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocphan/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <ThemCourse />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocphan/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SuaCourse />
                 </Suspense>
               </PrivateRoute>
             }

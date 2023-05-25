@@ -25,7 +25,14 @@ export default function SuaCourse() {
 
   const getCourse = (id: number) => {
     CourseService.getById(+id).then((course) => {
-      const fields = ["name", "id"];
+      const fields = [
+        "code",
+        "name",
+        "creditName",
+        "theoryClass",
+        "practicalClass",
+        "id",
+      ];
       fields.forEach((field) => setValue(field, course[field]));
     });
   };
@@ -41,7 +48,7 @@ export default function SuaCourse() {
       await CourseService.update(+id, data)
         .then((response) => {
           console.log(response);
-          navigate("/course");
+          navigate("/hocphan");
         })
         .catch((error) => {
           console.log(error);
@@ -50,7 +57,7 @@ export default function SuaCourse() {
   };
 
   const handleBack = () => {
-    navigate("/course");
+    navigate("/hocphan");
   };
   return (
     <>
@@ -61,9 +68,21 @@ export default function SuaCourse() {
           onSubmit={handleSubmit(UpdateCourse)}
           onReset={reset}
         >
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label htmlFor="title" className="form-label d-block text-start">
-              Tên Học Phần
+              Mã học phần
+            </label>
+            <input
+              type="text"
+              className={classNames("form-control", {
+                "is-invalid": Boolean(errors?.code?.message),
+              })}
+              {...register("code")}
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="title" className="form-label d-block text-start">
+              Tên học phần
             </label>
             <input
               type="text"
@@ -71,6 +90,42 @@ export default function SuaCourse() {
                 "is-invalid": Boolean(errors?.name?.message),
               })}
               {...register("name")}
+            />
+          </div>
+          <div className="col-md-4">
+            <label htmlFor="title" className="form-label d-block text-start">
+              Số tín chỉ
+            </label>
+            <input
+              type="text"
+              className={classNames("form-control", {
+                "is-invalid": Boolean(errors?.creditName?.message),
+              })}
+              {...register("creditName")}
+            />
+          </div>
+          <div className="col-md-4">
+            <label htmlFor="title" className="form-label d-block text-start">
+              Lớp lý thuyết
+            </label>
+            <input
+              type="text"
+              className={classNames("form-control", {
+                "is-invalid": Boolean(errors?.theoryClass?.message),
+              })}
+              {...register("theoryClass")}
+            />
+          </div>
+          <div className="col-md-4">
+            <label htmlFor="title" className="form-label d-block text-start">
+              Lớp thực hành
+            </label>
+            <input
+              type="text"
+              className={classNames("form-control", {
+                "is-invalid": Boolean(errors?.practicalClass?.message),
+              })}
+              {...register("practicalClass")}
             />
           </div>
           <div className="col-12 text-end">
