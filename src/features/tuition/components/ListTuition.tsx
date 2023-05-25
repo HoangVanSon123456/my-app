@@ -31,7 +31,7 @@ export default function ListTuition({ listTuition, handleDelete }: IProps) {
 
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
-    navigate(`/tuition/update/${id}`);
+    navigate(`/hocphi/update/${id}`);
     console.log(id);
   };
 

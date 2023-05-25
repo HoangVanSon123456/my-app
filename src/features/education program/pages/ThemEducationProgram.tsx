@@ -30,7 +30,7 @@ export default function ThemEducationProgram() {
     EducationProgramService.create(data)
       .then((response) => {
         console.log(response);
-        navigate("/educationProgram");
+        navigate("/chuongtrinhdaotao");
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +38,7 @@ export default function ThemEducationProgram() {
   };
 
   const handleBack = () => {
-    navigate("/educationProgram");
+    navigate("/chuongtrinhdaotao");
   };
   return (
     <>

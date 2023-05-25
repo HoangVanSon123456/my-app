@@ -55,7 +55,7 @@ export default function SuaEducationProduct() {
       await EducationProgramService.update(+id, data)
         .then((response) => {
           console.log(response);
-          navigate("/educationProgram");
+          navigate("/chuongtrinhdaotao");
         })
         .catch((error) => {
           console.log(error);
@@ -64,7 +64,7 @@ export default function SuaEducationProduct() {
   };
 
   const handleBack = () => {
-    navigate("/educationProgram");
+    navigate("/chuongtrinhdaotao");
   };
   return (
     <>

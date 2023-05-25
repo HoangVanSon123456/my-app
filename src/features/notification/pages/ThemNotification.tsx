@@ -25,7 +25,7 @@ export default function ThemNotification() {
     NotificationService.create(data)
       .then((response) => {
         console.log(response);
-        navigate("/notification");
+        navigate("/ThongBao");
       })
       .catch((error) => {
         console.log(error);
@@ -33,7 +33,7 @@ export default function ThemNotification() {
   };
 
   const handleBack = () => {
-    navigate("/notification");
+    navigate("/ThongBao");
   };
   return (
     <>

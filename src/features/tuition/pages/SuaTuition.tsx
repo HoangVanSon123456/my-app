@@ -56,7 +56,7 @@ export default function SuaTuition() {
       await TuitionService.update(+id, data)
         .then((response) => {
           console.log(response);
-          navigate("/tuition");
+          navigate("/hocphi");
         })
         .catch((error) => {
           console.log(error);
@@ -65,7 +65,7 @@ export default function SuaTuition() {
   };
 
   const handleBack = () => {
-    navigate("/tuition");
+    navigate("/hocphi");
   };
   return (
     <>

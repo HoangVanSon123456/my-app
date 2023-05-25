@@ -30,7 +30,7 @@ export default function ThemTuition() {
     TuitionService.create(data)
       .then((response) => {
         console.log(response);
-        navigate("/tuition");
+        navigate("/hocphi");
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +38,7 @@ export default function ThemTuition() {
   };
 
   const handleBack = () => {
-    navigate("/tuition");
+    navigate("/hocphi");
   };
   return (
     <>

@@ -17,7 +17,7 @@ export default function EducationProgramList() {
   }, []);
 
   const handleClickOpen = () => {
-    navigate("/EducationProgram/create");
+    navigate("/chuongtrinhdaotao/create");
   };
 
   const getList = async () => {

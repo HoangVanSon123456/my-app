@@ -2,26 +2,26 @@ import Tuition from "types/Tuition";
 import http from "./http";
 
 const getList = async () => {
-  const { data } = await http.get("/tuition");
+  const { data } = await http.get("/admin/tuition");
   return data;
 };
 
 const create = async (data: Tuition) => {
-  await http.post("/tuition/add", data);
+  await http.post("/admin/tuition/add", data);
   return data;
 };
 
 const deleteItem = async (id: number) => {
-  const { data } = await http.delete(`/tuition/delete/${id}`);
+  const { data } = await http.delete(`/admin/tuition/delete/${id}`);
   return data;
 };
 
 const update = (id: number, data: Tuition) => {
-  return http.put(`/tuition/update/${id}`, data);
+  return http.put(`/admin/tuition/update/${id}`, data);
 };
 
 const getById = async (id: number) => {
-  const { data } = await http.get(`/tuition/${id}`);
+  const { data } = await http.get(`/admin/tuition/${id}`);
   return data;
 };
 

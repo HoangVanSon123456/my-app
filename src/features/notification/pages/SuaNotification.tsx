@@ -42,7 +42,7 @@ export default function SuaNotification() {
       await NotificationService.update(+id, data)
         .then((response) => {
           console.log(response);
-          navigate("/notification");
+          navigate("/ThongBao");
         })
         .catch((error) => {
           console.log(error);
@@ -51,7 +51,7 @@ export default function SuaNotification() {
   };
 
   const handleBack = () => {
-    navigate("/notification");
+    navigate("/ThongBao");
   };
   return (
     <>

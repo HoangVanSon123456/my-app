@@ -1,6 +1,5 @@
 import Course from "types/Course";
 import http from "./http";
-import { ApiResponse, DataListResponse } from "types/common/ApiResponse";
 
 const getList = async () => {
   const { data } = await http.get("/admin/course");

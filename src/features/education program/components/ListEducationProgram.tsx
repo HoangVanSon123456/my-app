@@ -20,7 +20,7 @@ export default function ListNotification({
   const navigate = useNavigate();
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
-    navigate(`/educationProgram/update/${id}`);
+    navigate(`/chuongtrinhdaotao/update/${id}`);
     console.log(id);
   };
   return (

@@ -4,6 +4,15 @@ import GiaoVien from "features/user/pages/GiaoVien";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { store } from "redux/store";
+import NotificationList from "features/notification/pages/NotificationList";
+import ThemNotification from "features/notification/pages/ThemNotification";
+import SuaNotification from "features/notification/pages/SuaNotification";
+import EducationProgramList from "features/education program/pages/EducationProgramList";
+import ThemEducationProgram from "features/education program/pages/ThemEducationProgram";
+import SuaEducationProduct from "features/education program/pages/SuaEducationProgram";
+import TuitionList from "features/tuition/pages/TuitionList";
+import ThemTuition from "features/tuition/pages/ThemTuition";
+import SuaTuition from "features/tuition/pages/SuaTuition";
 
 const ThemUser = React.lazy(() => import("features/user/pages/ThemUser"));
 const EditUser = React.lazy(() => import("features/user/pages/EditUser"));
@@ -47,6 +56,96 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <EditUser />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/ThongBao"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <NotificationList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/notification/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <ThemNotification />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/notification/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SuaNotification />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/chuongtrinhdaotao"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <EducationProgramList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/chuongtrinhdaotao/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <ThemEducationProgram />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/chuongtrinhdaotao/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SuaEducationProduct />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocphi"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <TuitionList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocphi/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <ThemTuition />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocphi/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SuaTuition />
                 </Suspense>
               </PrivateRoute>
             }

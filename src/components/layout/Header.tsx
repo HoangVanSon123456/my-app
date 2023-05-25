@@ -1,4 +1,5 @@
 import { Mail } from "react-feather";
+import Nav from "./Nav";
 
 export default function Header() {
   return (
@@ -130,7 +131,7 @@ export default function Header() {
           <ul className="nav navbar-nav flex-row">
             <li className="nav-item me-auto">
               <a className="navbar-brand" href="/GiaoVien">
-                <h2 className="brand-text ms-5">Vuexy</h2>
+                <h2 className="brand-text ms-1">Quản Lý Điểm</h2>
               </a>
             </li>
             <li className="nav-item nav-toggle">
@@ -152,32 +153,7 @@ export default function Header() {
           </ul>
         </div>
         <div className="shadow-bottom" />
-        <div className="main-menu-content">
-          <ul
-            className="navigation navigation-main"
-            id="main-menu-navigation"
-            data-menu="menu-navigation"
-          >
-            <li className="navigation-header">
-              <span data-i18n="Apps & Pages">Apps &amp; Pages</span>
-              <i data-feather="more-horizontal" />
-            </li>
-            <li className="nav-item">
-              <a className="" href="/GiaoVien">
-                <span className="menu-title text-truncate" data-i18n="Email">
-                  Giáo Viên
-                </span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="" href="/GiaoVien">
-                <span className="menu-title text-truncate" data-i18n="Email">
-                  Thông Báo
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <Nav />
       </div>
     </>
   );

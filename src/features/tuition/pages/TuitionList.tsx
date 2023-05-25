@@ -14,7 +14,7 @@ export default function TuitionList() {
   }, []);
 
   const handleClickOpen = () => {
-    navigate("/tuition/create");
+    navigate("/hocphi/create");
   };
 
   const getList = async () => {
