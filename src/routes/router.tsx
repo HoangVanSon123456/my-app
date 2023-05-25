@@ -11,6 +11,9 @@ import EducationProgramList from "features/education program/pages/EducationProg
 import ThemEducationProgram from "features/education program/pages/ThemEducationProgram";
 import SuaEducationProduct from "features/education program/pages/SuaEducationProgram";
 import TuitionList from "features/tuition/pages/TuitionList";
+import StudyScoreList from "features/study score/pages/StudyScoreList";
+import SuaStudyScore from "features/study score/pages/SuaStudyScore";
+import ThemStudyScore from "features/study score/pages/ThemStudyScore";
 import ThemTuition from "features/tuition/pages/ThemTuition";
 import SuaTuition from "features/tuition/pages/SuaTuition";
 
@@ -146,6 +149,36 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <SuaTuition />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/diemhocphan"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <StudyScoreList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/studyscore/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <ThemStudyScore />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/studyscore/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SuaStudyScore />
                 </Suspense>
               </PrivateRoute>
             }

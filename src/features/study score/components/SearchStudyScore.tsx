@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-export default function SearchEducationProgram() {
+export default function SearchStudyScore() {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = () => {};
