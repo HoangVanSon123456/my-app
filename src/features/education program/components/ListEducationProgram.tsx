@@ -33,11 +33,7 @@ export default function ListNotification({
                 <thead>
                   <tr>
                     <th>Mã Đào Tạo</th>
-                    <th>Mã Học Phần</th>
-                    <th>Tên Học Phần</th>
-                    <th>Số Tín Chỉ</th>
-                    <th>Số Tiết Lý Thuyết</th>
-                    <th>Số Tiết Thực Hành</th>
+                    <th>Tên Chương Trình Đào Tạo</th>
                     <th>Học Kỳ</th>
                     <th>Thao tác</th>
                   </tr>
@@ -47,11 +43,9 @@ export default function ListNotification({
                     (item: EducationProgram, index: number) => (
                       <tr key={item.id}>
                         <td>{item?.id}</td>
-                        <td>{item?.courseCode}</td>
-                        <td>{item?.courseName}</td>
-                        <td>{item?.creditName}</td>
-                        <td>{item?.theoryClass}</td>
-                        <td>{item?.practicalClass}</td>
+                        <td>
+                          <a href="/GiaoVien">{item?.name}</a>
+                        </td>
                         <td>{item?.semester}</td>
                         <td className="text-left">
                           <div>
