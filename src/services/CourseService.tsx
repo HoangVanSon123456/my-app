@@ -25,11 +25,18 @@ const getById = async (id: number) => {
   return data;
 };
 
-const courseService = {
+const getCourseByEdu = async (id: number) => {
+  const { data } = await http.get(`/admin/edu-course/${id}`);
+  console.log(data);
+  return data;
+};
+
+const CourseService = {
+  getCourseByEdu,
   getList,
   create,
   deleteItem,
   update,
   getById,
 };
-export default courseService;
+export default CourseService;

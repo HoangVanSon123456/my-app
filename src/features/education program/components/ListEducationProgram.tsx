@@ -23,6 +23,11 @@ export default function ListNotification({
     navigate(`/chuongtrinhdaotao/update/${id}`);
     console.log(id);
   };
+  const handleEduProCourse = (eduId: number) => {
+    setAnchorEl(null);
+    navigate(`/chuongtrinhdaotao/getCourse/${eduId}`);
+    console.log(eduId);
+  };
   return (
     <>
       <section id="basic-datatable">
@@ -43,8 +48,8 @@ export default function ListNotification({
                     (item: EducationProgram, index: number) => (
                       <tr key={item.id}>
                         <td>{item?.id}</td>
-                        <td>
-                          <a href="/GiaoVien">{item?.name}</a>
+                        <td onClick={() => handleEduProCourse(item.id!)}>
+                          {item?.name}
                         </td>
                         <td>{item?.semester}</td>
                         <td className="text-left">

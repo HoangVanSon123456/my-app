@@ -1,7 +1,6 @@
 export default function Nav() {
   return (
     <>
-      {" "}
       <div className="main-menu-content">
         <ul
           className="navigation navigation-main"
