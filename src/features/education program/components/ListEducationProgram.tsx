@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import EducationProgram from "types/EducationProgram";
 import { Edit, Trash } from "react-feather";
@@ -23,11 +23,6 @@ export default function ListNotification({
     navigate(`/chuongtrinhdaotao/update/${id}`);
     console.log(id);
   };
-  const handleEduProCourse = (eduId: number) => {
-    setAnchorEl(null);
-    navigate(`/chuongtrinhdaotao/getCourse/${eduId}`);
-    console.log(eduId);
-  };
   return (
     <>
       <section id="basic-datatable">
@@ -48,8 +43,10 @@ export default function ListNotification({
                     (item: EducationProgram, index: number) => (
                       <tr key={item.id}>
                         <td>{item?.id}</td>
-                        <td onClick={() => handleEduProCourse(item.id!)}>
-                          {item?.name}
+                        <td>
+                          <Link to={`/chuongtrinhdaotao/getCourse/${item.id}`}>
+                            <span className="fw-bold">{item?.name}</span>
+                          </Link>
                         </td>
                         <td>{item?.semester}</td>
                         <td className="text-left">
