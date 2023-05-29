@@ -48,11 +48,11 @@ export default function ThemGiaoVien() {
   };
 
   const handleBack = () => {
-    navigate("/GiaoVien");
+    navigate(-1);
   };
   return (
     <div className="card">
-      <div className="card-header h2">Thêm Giáo Viên</div>
+      <div className="card-header h2">Thêm</div>
       <form
         className="row p-2 g-2"
         onSubmit={handleSubmit(saveOrUpdateUser)}

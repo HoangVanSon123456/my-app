@@ -20,6 +20,7 @@ import CourseList from "features/course/pages/CourseList";
 import ThemCourse from "features/course/pages/ThemCourse";
 import SuaCourse from "features/course/pages/SuaCourse";
 import EducationProgramCourse from "features/education program/pages/EducationProgramCourse";
+import SinhVien from "features/user/pages/SinhVien";
 
 const ThemUser = React.lazy(() => import("features/user/pages/ThemUser"));
 const EditUser = React.lazy(() => import("features/user/pages/EditUser"));
@@ -48,7 +49,17 @@ export default function RouterView() {
             }
           ></Route>
           <Route
-            path="/GiaoVien/create"
+            path="/SinhVien"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SinhVien />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/user/create"
             element={
               <PrivateRoute>
                 <Suspense>
@@ -58,7 +69,7 @@ export default function RouterView() {
             }
           ></Route>
           <Route
-            path="/GiaoVien/update/:id"
+            path="/user/update/:id"
             element={
               <PrivateRoute>
                 <Suspense>

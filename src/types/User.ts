@@ -11,4 +11,5 @@ export default interface User {
   role?: string;
   accessToken?: string;
   refreshToken?: string;
+  userPosition?: string;
 }

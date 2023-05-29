@@ -1,8 +1,12 @@
 import User from "types/User";
 import http from "./http";
 
-const getList = async () => {
-  const { data } = await http.get("/member/user");
+const getListTeacher = async () => {
+  const { data } = await http.get("/admin/teacher");
+  return data;
+};
+const getListStrudent = async () => {
+  const { data } = await http.get("/admin/student");
   return data;
 };
 
@@ -26,7 +30,8 @@ const getById = async (id: number) => {
 };
 
 const UserService = {
-  getList,
+  getListTeacher,
+  getListStrudent,
   create,
   deleteItem,
   update,

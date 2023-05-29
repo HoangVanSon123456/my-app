@@ -3,9 +3,9 @@ import { Button, Stack, Typography } from "@mui/material";
 import UserService from "../../../services/UserService";
 import User from "../../../types/User";
 import SearchGiaoVien from "../components/SearchUser";
-import ListGiaoVien from "../components/ListUser";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "components/layout/ModalConfirm";
+import ListUserTeacher from "../components/ListUserTeacher";
 
 export default function GiaoVien() {
   const [listUsers, setListUsers] = useState<User[]>([]);
@@ -14,7 +14,7 @@ export default function GiaoVien() {
   const [itemId, setItemId] = useState(0);
 
   const handleClickOpen = () => {
-    navigate("/GiaoVien/create");
+    navigate("/user/create");
   };
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function GiaoVien() {
   }, []);
 
   const getListUsers = async () => {
-    await UserService.getList()
+    await UserService.getListTeacher()
       .then((res) => {
         console.log(res);
         setListUsers(res);
@@ -43,7 +43,6 @@ export default function GiaoVien() {
         .then(() => getListUsers())
         .catch((err) => console.log(err));
       setShow(false);
-      // setItemId(0);
     }
   };
 
@@ -67,7 +66,7 @@ export default function GiaoVien() {
         </Button>
       </Stack>
       <SearchGiaoVien />
-      <ListGiaoVien listUsers={listUsers} handleDelete={handleDelete} />
+      <ListUserTeacher listUsers={listUsers} handleDelete={handleDelete} />
       <ModalConfirm
         show={show}
         text="Bạn thực sự muốn xoá đối tượng này?"

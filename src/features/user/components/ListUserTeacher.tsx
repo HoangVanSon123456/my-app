@@ -19,18 +19,18 @@ interface IProps {
   handleDelete: Function;
 }
 
-ListGiaoVien.defaultProps = {
+ListUserTeacher.defaultProps = {
   listUsers: [],
   handleDelete: null,
 };
 
-export default function ListGiaoVien({ listUsers, handleDelete }: IProps) {
+export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
 
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
-    navigate(`/GiaoVien/update/${id}`);
+    navigate(`/user/update/${id}`);
     console.log(id);
   };
 

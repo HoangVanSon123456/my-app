@@ -37,13 +37,12 @@ export default function SuaGiaoVien() {
     if (id) {
       getUser(+id);
     }
-  }, []);
+  }, [id]);
 
   const UpdateUser = async (data: User) => {
     if (id) {
       await UserService.update(+id, data)
         .then((response) => {
-          console.log(response);
           navigate("/GiaoVien");
         })
         .catch((error) => {
@@ -52,10 +51,14 @@ export default function SuaGiaoVien() {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <div className="card">
-        <div className="card-header h1">Sửa Giáo Viên</div>
+        <div className="card-header h1">Sửa</div>
         <form
           className="row p-2 g-2"
           onSubmit={handleSubmit(UpdateUser)}
@@ -150,7 +153,11 @@ export default function SuaGiaoVien() {
             <button type="submit" className="btn btn-primary me-2">
               Lưu
             </button>
-            <button type="submit" className="btn btn-secondary">
+            <button
+              type="submit"
+              className="btn btn-secondary"
+              onClick={handleBack}
+            >
               Thoát
             </button>
           </div>

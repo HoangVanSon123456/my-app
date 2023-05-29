@@ -19,6 +19,13 @@ export default function Nav() {
             </a>
           </li>
           <li className="nav-item">
+            <a className="" href="/SinhVien">
+              <span className="menu-title text-truncate" data-i18n="user">
+                Sinh Viên
+              </span>
+            </a>
+          </li>
+          <li className="nav-item">
             <a className="" href="/ThongBao">
               <span
                 className="menu-title text-truncate"
