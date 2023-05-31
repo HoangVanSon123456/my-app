@@ -97,7 +97,7 @@ export default function LoginFrom() {
             </label>
           </div>
         </div>
-        <button>Submit</button>
+        <button className="btn btn-success w-100">Submit</button>
       </form>
     </>
   );

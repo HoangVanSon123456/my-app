@@ -27,11 +27,16 @@ const getById = async (id: number) => {
 
 const getCourseByEdu = async (id: number) => {
   const { data } = await http.get(`/admin/edu-course/${id}`);
-  console.log(data);
+  return data;
+};
+
+const searchCourse = async (keyword: string) => {
+  const { data } = await http.get(`/admin/course/search/${keyword}`);
   return data;
 };
 
 const CourseService = {
+  searchCourse,
   getCourseByEdu,
   getList,
   create,

@@ -1,10 +1,9 @@
-import { Button, Stack, Typography } from "@mui/material";
 import ListCourse from "../components/ListCourse";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Course from "types/Course";
 import courseService from "services/CourseService";
-import SearchCourse from "../components/SearchCourse";
+import SearchCourse from "../components/SearchCourseFrom";
 import ModalConfirm from "components/layout/ModalConfirm";
 
 export default function CourseList() {
@@ -37,6 +36,15 @@ export default function CourseList() {
     }
   };
 
+  const handleSearch = async (keyword: string) => {
+    await courseService
+      .searchCourse(keyword)
+      .then((res) => {
+        setCoulistCourseList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const deleteItem = async () => {
     if (itemId > 0) {
       await courseService
@@ -46,6 +54,10 @@ export default function CourseList() {
       setShow(false);
       // setItemId(0);
     }
+  };
+
+  const handleReset = () => {
+    getList();
   };
   return (
     <>
@@ -84,7 +96,10 @@ export default function CourseList() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            <SearchCourse />
+            <SearchCourse
+              handleSearch={handleSearch}
+              handleReset={handleReset}
+            />
             <ListCourse listCourse={listCourse} handleDelete={handleDelete} />
           </div>
           <ModalConfirm

@@ -1,5 +1,6 @@
-import { Mail } from "react-feather";
+import { Archive, Mail, User } from "react-feather";
 import Nav from "./Nav";
+import { Dropdown } from "react-bootstrap";
 
 export default function Header() {
   return (
@@ -82,7 +83,7 @@ export default function Header() {
                 </li>
               </ul>
             </div>
-            <ul className="nav navbar-nav align-items-center ms-auto">
+            {/* <ul className="nav navbar-nav align-items-center ms-auto">
               <li className="nav-item dropdown dropdown-user">
                 <a
                   className="nav-link dropdown-toggle dropdown-user-link"
@@ -119,7 +120,17 @@ export default function Header() {
                   </a>
                 </div>
               </li>
-            </ul>
+            </ul> */}
+            <div style={{ display: "block", marginLeft: "950px" }}>
+              <Dropdown>
+                <Dropdown.Toggle variant="success">
+                  <User />
+                </Dropdown.Toggle>
+                <Dropdown.Menu style={{ marginTop: "20px" }}>
+                  <Dropdown.Item href="#">Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
           </div>
         </nav>
       </div>

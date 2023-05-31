@@ -1,9 +1,33 @@
 import { useForm } from "react-hook-form";
+import SearchCourse from "..";
+interface IProps {
+  handleSearch: Function;
+  handleReset: Function;
+}
 
-export default function SearchNotification() {
-  const { register, handleSubmit } = useForm();
+SearchCourseForm.defaultProps = {
+  handleSearch: null,
+  handleReset: null,
+};
 
-  const onSubmit = () => {};
+export default function SearchCourseForm({
+  handleSearch,
+  handleReset,
+}: IProps) {
+  const { register, handleSubmit, reset } = useForm({});
+
+  const onSubmit = (data: SearchCourse) => {
+    handleSearch(data.code?.trim() || data.name?.trim());
+    console.log(data);
+  };
+
+  const resetForm = () => {
+    handleReset();
+    reset({
+      code: "",
+      name: "",
+    });
+  };
   return (
     <div className="card">
       <div className="card-header mb-1">
@@ -16,7 +40,7 @@ export default function SearchNotification() {
               <div className="mb-1">
                 <label className="form-label">Mã Học Phần</label>
                 <input
-                  {...register("searchText")}
+                  {...register("code")}
                   type="text"
                   className="form-control"
                 />
@@ -26,7 +50,7 @@ export default function SearchNotification() {
               <div className="mb-1">
                 <label className="form-label">Tên Học Phần</label>
                 <input
-                  {...register("searchText")}
+                  {...register("name")}
                   type="text"
                   className="form-control"
                 />
@@ -34,7 +58,10 @@ export default function SearchNotification() {
             </div>
 
             <div className="col-12 text-end">
-              <button className="btn btn-outline-secondary waves-effect me-2">
+              <button
+                className="btn btn-outline-secondary waves-effect me-2"
+                onClick={resetForm}
+              >
                 Reset
               </button>
               <button className="btn btn-success">Tìm kiếm</button>
