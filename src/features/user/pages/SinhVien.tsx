@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "services/UserService";
 import User from "types/User";
-import SearchGiaoVien from "../components/SearchUser";
+import SearchGiaoVien from "../components/SearchUserForm";
 import ModalConfirm from "components/layout/ModalConfirm";
 import ListUserStudent from "../components/ListUserStudent";
 
@@ -28,6 +28,18 @@ export default function SinhVien() {
         setListUsers(res);
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleSearch = async (keyword: string) => {
+    await UserService.searchUser(keyword)
+      .then((res) => {
+        setListUsers(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleReset = () => {
+    getListUsers();
   };
 
   const handleDelete = async (id: number) => {
@@ -65,7 +77,7 @@ export default function SinhVien() {
           Them Nguoi Dung
         </Button>
       </Stack>
-      <SearchGiaoVien />
+      <SearchGiaoVien handleSearch={handleSearch} handleReset={handleReset} />
       <ListUserStudent listUsers={listUsers} handleDelete={handleDelete} />
       <ModalConfirm
         show={show}

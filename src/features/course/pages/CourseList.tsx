@@ -45,6 +45,10 @@ export default function CourseList() {
       .catch((err) => console.log(err));
   };
 
+  const handleReset = () => {
+    getList();
+  };
+
   const deleteItem = async () => {
     if (itemId > 0) {
       await courseService
@@ -56,9 +60,6 @@ export default function CourseList() {
     }
   };
 
-  const handleReset = () => {
-    getList();
-  };
   return (
     <>
       <div className="content-header row">

@@ -29,7 +29,13 @@ const getById = async (id: number) => {
   return data;
 };
 
+const searchUser = async (keyword: string) => {
+  const { data } = await http.get(`/admin/user/search/${keyword}`);
+  return data;
+};
+
 const UserService = {
+  searchUser,
   getListTeacher,
   getListStrudent,
   create,

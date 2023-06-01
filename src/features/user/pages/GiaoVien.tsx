@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Stack, Typography } from "@mui/material";
 import UserService from "../../../services/UserService";
 import User from "../../../types/User";
-import SearchGiaoVien from "../components/SearchUser";
+import SearchGiaoVien from "../components/SearchUserForm";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "components/layout/ModalConfirm";
 import ListUserTeacher from "../components/ListUserTeacher";
@@ -37,6 +37,18 @@ export default function GiaoVien() {
     }
   };
 
+  const handleSearch = async (keyword: string) => {
+    await UserService.searchUser(keyword)
+      .then((res) => {
+        setListUsers(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleReset = () => {
+    getListUsers();
+  };
+
   const deleteItem = async () => {
     if (itemId > 0) {
       await UserService.deleteItem(itemId)
@@ -65,7 +77,7 @@ export default function GiaoVien() {
           Them Nguoi Dung
         </Button>
       </Stack>
-      <SearchGiaoVien />
+      <SearchGiaoVien handleSearch={handleSearch} handleReset={handleReset} />
       <ListUserTeacher listUsers={listUsers} handleDelete={handleDelete} />
       <ModalConfirm
         show={show}
