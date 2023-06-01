@@ -57,9 +57,9 @@ export default function ListStudyScore({
             {listStudyScore.map((item: StudyScore, index: number) => (
               <TableRow key={item?.id}>
                 <TableCell align="center">{item?.id}</TableCell>
-                <TableCell align="center">{item?.courseCode}</TableCell>
+                <TableCell align="center">{item?.courseId}</TableCell>
                 <TableCell align="center">{item?.courseName}</TableCell>
-                <TableCell align="center">{item?.creditName}</TableCell>
+                <TableCell align="center">{item?.courseCreditName}</TableCell>
                 <TableCell align="center">{item?.studyTimes}</TableCell>
                 <TableCell align="center">{item?.evaluate}</TableCell>
                 <TableCell align="center">{item?.processPoint}</TableCell>

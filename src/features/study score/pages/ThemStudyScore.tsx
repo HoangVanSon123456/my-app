@@ -5,12 +5,21 @@ import * as Yup from "yup";
 import classNames from "classnames";
 import StudyScore from "types/StudyScore";
 import StudyScoreService from "services/StudyScore";
+import { useEffect, useState } from "react";
+import Course from "types/Course";
+import CourseService from "services/CourseService";
 
 export default function ThemStudyScore() {
+  const [listCourse, setCoulistCourseList] = useState<Course[]>([]);
   const navigate = useNavigate();
   const validationSchema = Yup.object({
-    courseCode: Yup.string().required("Please Enter your name"),
-    courseName: Yup.string().required("Please Enter your username"),
+    courseId: Yup.string().required("Please Enter your name"),
+    evaluate: Yup.string().required("Please Enter your username"),
+    studyTimes: Yup.string().required("Please Enter your username"),
+    processPoint: Yup.string().required("Please Enter your username"),
+    testScore: Yup.string().required("Please Enter your username"),
+    endPoint: Yup.string().required("Please Enter your username"),
+    letterPoint: Yup.string().required("Please Enter your username"),
   }).required();
   const {
     register,
@@ -20,6 +29,18 @@ export default function ThemStudyScore() {
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    getList();
+  }, []);
+
+  const getList = async () => {
+    await CourseService.getList()
+      .then((res) => {
+        setCoulistCourseList(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const saveStudyScore = (data: StudyScore) => {
     StudyScoreService.create(data)
@@ -45,37 +66,17 @@ export default function ThemStudyScore() {
           onReset={reset}
         >
           <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Mã học phần
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.courseCode?.message),
-              })}
-              {...register("courseCode")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label className="form-label">Tên học phần</label>
-            <input
-              {...register("courseName")}
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.courseName?.message),
-              })}
-            />
-          </div>
-          <div className="col-md-4">
             <label htmlFor="content" className="form-label d-block text-start">
-              Số Tín Chỉ
+              Học phầns
             </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.creditName?.message),
-              })}
-              {...register("creditName")}
-            />
+            <select {...register("courseId")} className="form-select">
+              <option value={0}>--</option>
+              {listCourse.map((la) => (
+                <option key={la.id} value={la.id}>
+                  {la.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="col-md-4">
             <label htmlFor="content" className="form-label d-block text-start">

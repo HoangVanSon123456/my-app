@@ -13,9 +13,6 @@ export default function SuaStudyScore() {
   const navigate = useNavigate();
   const { id } = useParams();
   const validationSchema = Yup.object({
-    courseCode: Yup.string().required("Please Enter your name"),
-    courseName: Yup.string().required("Please Enter your username"),
-    creditName: Yup.string().required("Please Enter your name"),
     studyTimes: Yup.string().required("Please Enter your username"),
     evaluate: Yup.string().required("Please Enter your name"),
     processPoint: Yup.string().required("Please Enter your username"),
@@ -36,9 +33,6 @@ export default function SuaStudyScore() {
   const getStudyScore = (id: number) => {
     StudyScoreService.getById(+id).then((studyscore) => {
       const fields = [
-        "courseCode",
-        "courseName",
-        "creditName",
         "studyTimes",
         "evaluate",
         "processPoint",
@@ -82,39 +76,6 @@ export default function SuaStudyScore() {
           onSubmit={handleSubmit(UpdateStudyScore)}
           onReset={reset}
         >
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Mã học phần
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.courseCode?.message),
-              })}
-              {...register("courseCode")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label className="form-label">Tên học phần</label>
-            <input
-              {...register("courseName")}
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.courseName?.message),
-              })}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Số Tín Chỉ
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.creditName?.message),
-              })}
-              {...register("creditName")}
-            />
-          </div>
           <div className="col-md-4">
             <label htmlFor="content" className="form-label d-block text-start">
               Số lần học
