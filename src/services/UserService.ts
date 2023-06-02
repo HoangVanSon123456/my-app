@@ -1,5 +1,7 @@
 import User from "types/User";
 import http from "./http";
+import { getLocalStorage } from "configs/localStorage";
+import { AUTH_KEYS } from "configs/auth";
 
 const getListTeacher = async () => {
   const { data } = await http.get("/admin/teacher");
@@ -29,12 +31,32 @@ const getById = async (id: number) => {
   return data;
 };
 
+const getUser = async (id: number) => {
+  const { data } = await http.get(`/authen/getUser/${id}`, {
+    headers: {
+      token: getLocalStorage(AUTH_KEYS.ACCESS_TOKEN),
+    },
+  });
+  return data;
+};
+
+const getUserToken = async () => {
+  const { data } = await http.get(`/authen/getToken`, {
+    headers: {
+      token: getLocalStorage(AUTH_KEYS.ACCESS_TOKEN),
+    },
+  });
+  return data;
+};
+
 const searchUser = async (keyword: string) => {
   const { data } = await http.get(`/admin/user/search/${keyword}`);
   return data;
 };
 
 const UserService = {
+  getUserToken,
+  getUser,
   searchUser,
   getListTeacher,
   getListStrudent,

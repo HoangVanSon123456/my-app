@@ -3,12 +3,19 @@ import Nav from "./Nav";
 import { Dropdown } from "react-bootstrap";
 import AuthService from "services/AuthService";
 import { useNavigate } from "react-router-dom";
+import UserService from "services/UserService";
 
 export default function Header() {
   const navigate = useNavigate();
   const handleLogout = async () => {
     await AuthService.logout().then(() => {
       navigate("/");
+    });
+  };
+
+  const handleGetProfile = async () => {
+    await UserService.getUserToken().then((res) => {
+      navigate(`/user/getProfile/${res}`);
     });
   };
   return (
@@ -135,6 +142,9 @@ export default function Header() {
                   <User />
                 </Dropdown.Toggle>
                 <Dropdown.Menu style={{ marginTop: "20px" }}>
+                  <Dropdown.Item onClick={handleGetProfile}>
+                    Trang cá nhân
+                  </Dropdown.Item>
                   <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
