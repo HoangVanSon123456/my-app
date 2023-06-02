@@ -1,8 +1,16 @@
 import { Archive, Mail, User } from "react-feather";
 import Nav from "./Nav";
 import { Dropdown } from "react-bootstrap";
+import AuthService from "services/AuthService";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    await AuthService.logout().then(() => {
+      navigate("/");
+    });
+  };
   return (
     <>
       <div>
@@ -127,7 +135,7 @@ export default function Header() {
                   <User />
                 </Dropdown.Toggle>
                 <Dropdown.Menu style={{ marginTop: "20px" }}>
-                  <Dropdown.Item href="#">Logout</Dropdown.Item>
+                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>
