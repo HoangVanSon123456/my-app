@@ -56,18 +56,6 @@ export default function ThemNotification() {
               {...register("title")}
             />
           </div>
-          <div className="col-md-3">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Người tạo
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.userNotificationName?.message),
-              })}
-              {...register("userNotificationName")}
-            />
-          </div>
           <div className="col-md-6">
             <label className="form-label">File</label>
             <input

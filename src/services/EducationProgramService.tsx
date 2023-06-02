@@ -1,5 +1,6 @@
 import EducationProgram from "types/EducationProgram";
 import http from "./http";
+import EduProCourse from "types/EduProCourse";
 
 const getList = async () => {
   const { data } = await http.get("/admin/educationProgram");
@@ -25,7 +26,17 @@ const getById = async (id: number) => {
   return data;
 };
 
+const createCourseEdu = async (data: EduProCourse) => {
+  await http.post("/admin/edu-course/add", data, {
+    headers: {
+      eduId: localStorage.getItem("eduId"),
+    },
+  });
+  return data;
+};
+
 const EducationProgramService = {
+  createCourseEdu,
   getList,
   create,
   deleteItem,

@@ -106,7 +106,6 @@ export default function CourseList() {
           <ModalConfirm
             show={show}
             text="Bạn thực sự muốn xoá đối tượng này?"
-            // btnDisabled={loadingDelete}
             changeShow={(s: boolean) => setShow(s)}
             submitAction={deleteItem}
           />

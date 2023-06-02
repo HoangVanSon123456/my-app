@@ -4,5 +4,5 @@ export default interface Notification {
   content?: string;
   files?: string;
   userId?: number;
-  userNotificationName?: string;
+  userName?: string;
 }

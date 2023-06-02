@@ -1,7 +1,7 @@
 import { Button, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Trash } from "react-feather";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import courseService from "services/CourseService";
 import EducationProgramService from "services/EducationProgramService";
 import Course from "types/Course";
@@ -9,6 +9,8 @@ import Course from "types/Course";
 export default function EducationProgramCourse() {
   const [listCourse, setCoulistCourseList] = useState<Course[]>([]);
   const { eduId } = useParams();
+
+  const navigator = useNavigate();
 
   useEffect(() => {
     if (eduId) {
@@ -23,6 +25,7 @@ export default function EducationProgramCourse() {
       .then((res) => {
         console.log(res);
         setCoulistCourseList(res);
+        localStorage.setItem("eduId", String(eduId));
       })
       .catch((err) => console.log(err));
   };
@@ -32,6 +35,10 @@ export default function EducationProgramCourse() {
       .deleteItem(id)
       .then(() => getEduProgramCourse(id))
       .catch((err) => console.log(err));
+  };
+
+  const handleClickOpen = async () => {
+    navigator("/chuongtrinhdaotao/createCourse");
   };
   return (
     <>
@@ -46,7 +53,7 @@ export default function EducationProgramCourse() {
         </Stack>
         <Button
           variant="contained"
-          // onClick={handleClickOpen}
+          onClick={handleClickOpen}
           sx={{ borderRadius: "10px", backgroundColor: "#4caf50" }}
         >
           Thêm môn học

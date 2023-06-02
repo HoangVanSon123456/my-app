@@ -1,5 +1,7 @@
 import Notification from "types/Notification";
 import http from "./http";
+import { getLocalStorage } from "configs/localStorage";
+import { AUTH_KEYS } from "configs/auth";
 
 const getList = async () => {
   const { data } = await http.get("/admin/notification");
@@ -7,7 +9,11 @@ const getList = async () => {
 };
 
 const create = async (data: Notification) => {
-  await http.post("/admin/notification/add", data);
+  await http.post("/admin/notification/add", data, {
+    headers: {
+      token: getLocalStorage(AUTH_KEYS.ACCESS_TOKEN),
+    },
+  });
   return data;
 };
 

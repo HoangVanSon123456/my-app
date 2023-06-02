@@ -21,6 +21,7 @@ import ThemCourse from "features/course/pages/ThemCourse";
 import SuaCourse from "features/course/pages/SuaCourse";
 import EducationProgramCourse from "features/education program/pages/EducationProgramCourse";
 import SinhVien from "features/user/pages/SinhVien";
+import ThemEducationProgramCourse from "features/education program/pages/ThemEducationProgramCourse";
 
 const ThemUser = React.lazy(() => import("features/user/pages/ThemUser"));
 const EditUser = React.lazy(() => import("features/user/pages/EditUser"));
@@ -144,6 +145,16 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <EducationProgramCourse />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/chuongtrinhdaotao/createCourse"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <ThemEducationProgramCourse />
                 </Suspense>
               </PrivateRoute>
             }

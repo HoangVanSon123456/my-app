@@ -53,9 +53,7 @@ export default function ListNotification({
               <TableRow key={item?.id}>
                 <TableCell align="center">{item?.id}</TableCell>
                 <TableCell align="center">{item?.title}</TableCell>
-                <TableCell align="center">
-                  {item?.userNotificationName}
-                </TableCell>
+                <TableCell align="center">{item?.userName}</TableCell>
                 <TableCell align="center">{item?.content}</TableCell>
                 <TableCell align="center">{item?.files}</TableCell>
                 <TableCell align="center">
