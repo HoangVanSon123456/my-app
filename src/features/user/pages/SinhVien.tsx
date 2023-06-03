@@ -60,32 +60,60 @@ export default function SinhVien() {
   };
   return (
     <>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        spacing={4}
-        sx={{ marginBottom: "15px" }}
-      >
-        <Stack>
-          <Typography variant="h4">Sinh Viên</Typography>
-        </Stack>
-        <Button
-          variant="contained"
-          onClick={handleClickOpen}
-          sx={{ borderRadius: "10px", backgroundColor: "#4caf50" }}
-        >
-          Them Nguoi Dung
-        </Button>
-      </Stack>
-      <SearchGiaoVien handleSearch={handleSearch} handleReset={handleReset} />
-      <ListUserStudent listUsers={listUsers} handleDelete={handleDelete} />
-      <ModalConfirm
-        show={show}
-        text="Bạn thực sự muốn xoá đối tượng này?"
-        // btnDisabled={loadingDelete}
-        changeShow={(s: boolean) => setShow(s)}
-        submitAction={deleteItem}
-      />
+      <div className="content-header row">
+        <div className="content-header-left col-md-9 col-12 mb-2">
+          <div className="row breadcrumbs-top">
+            <div className="col-12">
+              <h2 className="content-header-title float-start mb-0">
+                Giáo Viên
+              </h2>
+              <div className="breadcrumb-wrapper">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <a href="/">Trang chủ</a>
+                  </li>
+                  <li className="breadcrumb-item">
+                    <a href="/GiaoVien">Giáo Viên</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+          <div className="mb-1 breadcrumb-right">
+            <button
+              type="button"
+              className="btn btn-primary btn-10px"
+              onClick={handleClickOpen}
+            >
+              Thêm Giáo Viên
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="content-body">
+        <div className="row">
+          <div className="col-12">
+            <SearchGiaoVien
+              handleSearch={handleSearch}
+              handleReset={handleReset}
+            />
+            <div className="card">
+              <ListUserStudent
+                listUsers={listUsers}
+                handleDelete={handleDelete}
+              />
+            </div>
+            <ModalConfirm
+              show={show}
+              text="Bạn thực sự muốn xoá đối tượng này?"
+              changeShow={(s: boolean) => setShow(s)}
+              submitAction={deleteItem}
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
