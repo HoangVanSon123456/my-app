@@ -24,55 +24,47 @@ export default function ListCourse({ listCourse, handleDelete }: IProps) {
 
   return (
     <>
-      <section id="basic-datatable">
-        <div className="row">
-          <div className="col-12">
-            <div className="card">
-              <table className="datatables-basic table">
-                <thead>
-                  <tr>
-                    <th>Mã học phần</th>
-                    <th>Tên học phần</th>
-                    <th>Số tín chỉ</th>
-                    <th>Lớp lý thuyết</th>
-                    <th>Lớp thực hành</th>
-                    <th>Thao tác</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {listCourse.map((course: Course, index: number) => (
-                    <tr key={course.id}>
-                      <td>{course.code}</td>
-                      <td>{course.name}</td>
-                      <td>{course.creditName}</td>
-                      <td>{course.theoryClass}</td>
-                      <td>{course.practicalClass}</td>
-                      <td className="text-left">
-                        <div>
-                          <button
-                            type="button"
-                            className="btn btn-outline-danger btn-sm"
-                            onClick={() => handleDelete(course.id!)}
-                          >
-                            <Trash size={16} />
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-outline-info btn-sm mx-1"
-                            onClick={() => handleEditItem(course.id!)}
-                          >
-                            <Edit size={16} />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
+      <table className="datatables-basic table">
+        <thead>
+          <tr>
+            <th className="text-center">Mã học phần</th>
+            <th className="text-center">Tên học phần</th>
+            <th className="text-center">Số tín chỉ</th>
+            <th className="text-center">Lớp lý thuyết</th>
+            <th className="text-center">Lớp thực hành</th>
+            <th className="text-left">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          {listCourse.map((course: Course, index: number) => (
+            <tr key={course.id}>
+              <td className="text-center">{course.code}</td>
+              <td className="text-center">{course.name}</td>
+              <td className="text-center">{course.creditName}</td>
+              <td className="text-center">{course.theoryClass}</td>
+              <td className="text-center">{course.practicalClass}</td>
+              <td>
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger btn-sm"
+                    onClick={() => handleDelete(course.id!)}
+                  >
+                    <Trash size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-info btn-sm mx-1"
+                    onClick={() => handleEditItem(course.id!)}
+                  >
+                    <Edit size={16} />
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }

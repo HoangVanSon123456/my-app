@@ -12,17 +12,7 @@ export default function SearchNotification() {
       <div className="card-body">
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
-            <div className="col-sm-3 col-6">
-              <div className="mb-1">
-                <label className="form-label">Mã Thông Báo</label>
-                <input
-                  {...register("searchText")}
-                  type="text"
-                  className="form-control"
-                />
-              </div>
-            </div>
-            <div className="col-sm-9 col-6">
+            <div className="col-sm-12 col-6">
               <div className="mb-1">
                 <label className="form-label">Tiêu đề</label>
                 <input

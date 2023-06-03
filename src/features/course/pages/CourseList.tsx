@@ -101,7 +101,9 @@ export default function CourseList() {
               handleSearch={handleSearch}
               handleReset={handleReset}
             />
-            <ListCourse listCourse={listCourse} handleDelete={handleDelete} />
+            <div className="card">
+              <ListCourse listCourse={listCourse} handleDelete={handleDelete} />
+            </div>
           </div>
           <ModalConfirm
             show={show}

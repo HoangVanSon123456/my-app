@@ -38,9 +38,6 @@ export default function GetProfile() {
                 width="150px"
                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
               />
-              <span className="font-weight-bold">Edogaru</span>
-              <span className="text-black-50">edogaru@mail.com.my</span>
-              <span> </span>
             </div>
           </div>
           <div className="col-md-9 border-right">
@@ -55,6 +52,7 @@ export default function GetProfile() {
                     type="text"
                     className="form-control"
                     {...register("name")}
+                    readOnly
                   />
                 </div>
                 <div className="col-md-6">
@@ -63,6 +61,7 @@ export default function GetProfile() {
                     type="text"
                     className="form-control"
                     {...register("useName")}
+                    readOnly
                   />
                 </div>
               </div>
@@ -73,6 +72,7 @@ export default function GetProfile() {
                     type="text"
                     className="form-control"
                     {...register("phone")}
+                    readOnly
                   />
                 </div>
                 <div className="col-md-12 mt-2">
@@ -81,6 +81,7 @@ export default function GetProfile() {
                     type="text"
                     className="form-control"
                     {...register("address")}
+                    readOnly
                   />
                 </div>
                 <div className="col-md-12 mt-2">
@@ -89,6 +90,7 @@ export default function GetProfile() {
                     type="text"
                     className="form-control"
                     {...register("email")}
+                    readOnly
                   />
                 </div>
               </div>
