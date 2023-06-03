@@ -15,6 +15,7 @@ export default function ThemEducationProgramCourse() {
   const [listCourse, setCoulistCourseList] = useState([]);
   const { register, handleSubmit, reset, setValue } = useForm({});
   const [selected, setSelected] = useState<SelectOption[]>([]);
+  console.log(selected);
   const handleBack = () => {
     navigator(-1);
   };
