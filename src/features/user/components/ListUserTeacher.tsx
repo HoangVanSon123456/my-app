@@ -2,6 +2,7 @@ import User from "types/User";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Edit, Eye, Trash } from "react-feather";
+import { toast } from "react-toastify";
 interface IProps {
   listUsers: User[];
   handleDelete: Function;
@@ -15,6 +16,7 @@ ListUserTeacher.defaultProps = {
 export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
+  const notify = () => toast("Wow so easy!");
 
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
@@ -67,7 +69,7 @@ export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
                 <button
                   type="button"
                   className="btn btn-outline-warning btn-sm"
-                  // onClick={() => handleEditItem(item.id!)}
+                  onClick={notify}
                 >
                   <Eye size={16} />
                 </button>

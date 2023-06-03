@@ -5,11 +5,13 @@ import NotificationService from "services/NotificationService";
 import Notification from "types/Notification";
 import ListNotification from "../components/ListNotification";
 import SearchNotification from "../components/SearchNotification";
+import ModalConfirm from "components/layout/ModalConfirm";
 
 export default function NotificationList() {
   const [listNotification, setNotificationList] = useState<Notification[]>([]);
   const navigate = useNavigate();
-
+  const [show, setShow] = useState(false);
+  const [itemId, setItemId] = useState(0);
   useEffect(() => {
     getList();
   }, []);
@@ -27,34 +29,77 @@ export default function NotificationList() {
   };
 
   const handleDelete = async (id: number) => {
-    await NotificationService.deleteItem(id)
-      .then(() => getList())
-      .catch((err) => console.log(err));
+    if (id > 0) {
+      setShow(true);
+      setItemId(id);
+    }
+  };
+
+  const deleteItem = async () => {
+    if (itemId > 0) {
+      await NotificationService.deleteItem(itemId)
+        .then(() => getList())
+        .catch((err) => console.log(err));
+      setShow(false);
+      // setItemId(0);
+    }
   };
   return (
     <>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        spacing={4}
-        sx={{ marginBottom: "15px" }}
-      >
-        <Stack>
-          <Typography variant="h4">Thông báo</Typography>
-        </Stack>
-        <Button
-          variant="contained"
-          onClick={handleClickOpen}
-          sx={{ borderRadius: "10px", backgroundColor: "#4caf50" }}
-        >
-          Thêm Thông Báo
-        </Button>
-      </Stack>
-      <SearchNotification />
-      <ListNotification
-        listNotification={listNotification}
-        handleDelete={handleDelete}
-      />
+      <div className="content-header row">
+        <div className="content-header-left col-md-9 col-12 mb-2">
+          <div className="row breadcrumbs-top">
+            <div className="col-12">
+              <h2 className="content-header-title float-start mb-0">
+                Học Phần
+              </h2>
+              <div className="breadcrumb-wrapper">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <a href="/">Trang chủ</a>
+                  </li>
+                  <li className="breadcrumb-item">
+                    <a href="/course">Học phần</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+          <div className="mb-1 breadcrumb-right">
+            <button
+              type="button"
+              className="btn btn-primary btn-10px"
+              onClick={handleClickOpen}
+            >
+              Thêm học phần
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="content-body">
+        <div className="row">
+          <div className="col-12">
+            <SearchNotification
+            // handleSearch={handleSearch}
+            // handleReset={handleReset}
+            />
+            <div className="card">
+              <ListNotification
+                listNotification={listNotification}
+                handleDelete={handleDelete}
+              />
+            </div>
+          </div>
+          <ModalConfirm
+            show={show}
+            text="Bạn thực sự muốn xoá đối tượng này?"
+            changeShow={(s: boolean) => setShow(s)}
+            submitAction={deleteItem}
+          />
+        </div>
+      </div>
     </>
   );
 }

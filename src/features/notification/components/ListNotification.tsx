@@ -1,18 +1,7 @@
-import {
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
 import Notification from "types/Notification";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Edit, Eye, Trash } from "react-feather";
 interface IProps {
   listNotification: Notification[];
   handleDelete: Function;
@@ -36,39 +25,52 @@ export default function ListNotification({
   };
   return (
     <>
-      <TableContainer component={Paper}>
-        <Table aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">Mã Thông Báo</TableCell>
-              <TableCell align="center">Tiêu đề</TableCell>
-              <TableCell align="center">Người dùng</TableCell>
-              <TableCell align="center">Nội dung</TableCell>
-              <TableCell align="center">Tệp</TableCell>
-              <TableCell align="center">Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {listNotification.map((item: Notification, index: number) => (
-              <TableRow key={item?.id}>
-                <TableCell align="center">{item?.id}</TableCell>
-                <TableCell align="center">{item?.title}</TableCell>
-                <TableCell align="center">{item?.userName}</TableCell>
-                <TableCell align="center">{item?.content}</TableCell>
-                <TableCell align="center">{item?.files}</TableCell>
-                <TableCell align="center">
-                  <Button onClick={() => handleDelete(item.id!)}>
-                    <DeleteIcon sx={{ color: "red" }} />
-                  </Button>
-                  <Button onClick={() => handleEditItem(item.id!)}>
-                    <EditIcon />
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <table className="datatables-basic table">
+        <thead>
+          <tr>
+            <th className="text-center">Mã Thông Báo</th>
+            <th className="text-center">Tiêu đề</th>
+            <th className="text-center">Người dùng</th>
+            <th className="text-center">Tệp</th>
+            <th className="text-left">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          {listNotification.map((item: Notification, index: number) => (
+            <tr key={item.id}>
+              <td className="text-center">{item?.id}</td>
+              <td className="text-center">{item?.title}</td>
+              <td className="text-center">{item?.userName}</td>
+              <td className="text-center">{item?.files}</td>
+              <td>
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-outline-danger btn-sm"
+                    onClick={() => handleDelete(item.id!)}
+                  >
+                    <Trash size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-info btn-sm mx-1"
+                    onClick={() => handleEditItem(item.id!)}
+                  >
+                    <Edit size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-warning btn-sm"
+                    // onClick={() => handleEditItem(item.id!)}
+                  >
+                    <Eye size={16} />
+                  </button>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }

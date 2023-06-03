@@ -5,7 +5,8 @@ import SearchGiaoVien from "../components/SearchUserForm";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "components/layout/ModalConfirm";
 import ListUserTeacher from "../components/ListUserTeacher";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function GiaoVien() {
   const [listUsers, setListUsers] = useState<User[]>([]);
   const navigate = useNavigate();
@@ -110,6 +111,7 @@ export default function GiaoVien() {
               changeShow={(s: boolean) => setShow(s)}
               submitAction={deleteItem}
             />
+            <ToastContainer />
           </div>
         </div>
       </div>
