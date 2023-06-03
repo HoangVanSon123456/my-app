@@ -41,7 +41,6 @@ export default function SuaNotification() {
     if (id) {
       await NotificationService.update(+id, data)
         .then((response) => {
-          console.log(response);
           navigate("/ThongBao");
         })
         .catch((error) => {

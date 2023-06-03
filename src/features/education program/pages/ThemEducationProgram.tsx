@@ -29,7 +29,6 @@ export default function ThemEducationProgram() {
   const saveOrUpdateUser = (data: Notification) => {
     EducationProgramService.create(data)
       .then((response) => {
-        console.log(response);
         navigate("/chuongtrinhdaotao");
       })
       .catch((error) => {

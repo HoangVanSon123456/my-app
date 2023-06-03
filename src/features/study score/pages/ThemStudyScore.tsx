@@ -45,7 +45,6 @@ export default function ThemStudyScore() {
   const saveStudyScore = (data: StudyScore) => {
     StudyScoreService.create(data)
       .then((response) => {
-        console.log(response);
         navigate("/diemhocphan");
       })
       .catch((error) => {

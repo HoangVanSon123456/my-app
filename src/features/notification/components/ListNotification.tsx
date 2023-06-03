@@ -21,7 +21,6 @@ export default function ListNotification({
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
     navigate(`/notification/update/${id}`);
-    console.log(id);
   };
   return (
     <>

@@ -14,7 +14,6 @@ export default function EducationProgramCourse() {
 
   useEffect(() => {
     if (eduId) {
-      console.log(eduId);
       getEduProgramCourse(+eduId);
     }
   }, [eduId]);
@@ -23,7 +22,6 @@ export default function EducationProgramCourse() {
     await courseService
       .getCourseByEdu(eduId)
       .then((res) => {
-        console.log(res);
         setCoulistCourseList(res);
         localStorage.setItem("eduId", String(eduId));
       })

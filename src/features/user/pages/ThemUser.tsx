@@ -38,7 +38,6 @@ export default function ThemGiaoVien() {
     setLoadingUpdate(true);
     UserService.create(data)
       .then((response) => {
-        console.log(response);
         navigate("/GiaoVien");
       })
       .catch((error) => {

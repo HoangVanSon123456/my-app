@@ -32,7 +32,6 @@ export default function ListStudyScore({
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
     navigate(`/studyscore/update/${id}`);
-    console.log(id);
   };
   return (
     <>

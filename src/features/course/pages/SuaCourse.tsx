@@ -47,7 +47,6 @@ export default function SuaCourse() {
     if (id) {
       await CourseService.update(+id, data)
         .then((response) => {
-          console.log(response);
           navigate("/hocphan");
         })
         .catch((error) => {

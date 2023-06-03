@@ -54,7 +54,6 @@ export default function SuaEducationProduct() {
     if (id) {
       await EducationProgramService.update(+id, data)
         .then((response) => {
-          console.log(response);
           navigate("/chuongtrinhdaotao");
         })
         .catch((error) => {

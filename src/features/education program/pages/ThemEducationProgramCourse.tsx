@@ -5,23 +5,33 @@ import CourseService from "services/CourseService";
 import EducationProgramService from "services/EducationProgramService";
 import Course from "types/Course";
 import EduProCourse from "types/EduProCourse";
+import { MultiSelect } from "react-multi-select-component";
+import { SelectOption } from "types/common/Item";
+import { convertToSelectOptions } from "components/common/common";
+import { map } from "lodash";
 
 export default function ThemEducationProgramCourse() {
   const navigator = useNavigate();
-  const [listCourse, setCoulistCourseList] = useState<Course[]>([]);
-  const { register, handleSubmit, reset } = useForm({});
-
+  const [listCourse, setCoulistCourseList] = useState([]);
+  const { register, handleSubmit, reset, setValue } = useForm({});
+  const [selected, setSelected] = useState<SelectOption[]>([]);
   const handleBack = () => {
     navigator(-1);
   };
 
   const saveOrUpdateUser = async (data: EduProCourse) => {
+    console.log(data);
     await EducationProgramService.createCourseEdu(data)
       .then((res) => {
         console.log(res);
         navigator(-1);
       })
       .catch((err) => console.log(err));
+  };
+
+  const onchangeSelect = (option: SelectOption[]) => {
+    setSelected([...option]);
+    setValue("courseIds", map(option, "value"));
   };
 
   useEffect(() => {
@@ -44,7 +54,7 @@ export default function ThemEducationProgramCourse() {
           onSubmit={handleSubmit(saveOrUpdateUser)}
           onReset={reset}
         >
-          <div className="col-md-12">
+          {/* <div className="col-md-12">
             <label htmlFor="title" className="form-label d-block text-start">
               Tên môn học
             </label>
@@ -56,7 +66,13 @@ export default function ThemEducationProgramCourse() {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
+          <MultiSelect
+            options={convertToSelectOptions(listCourse)}
+            value={selected}
+            onChange={onchangeSelect}
+            labelledBy="Select"
+          />
           <div className="col-12 text-end">
             <button type="submit" className="btn btn-primary me-2">
               Lưu

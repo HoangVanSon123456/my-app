@@ -55,7 +55,6 @@ export default function SuaTuition() {
     if (id) {
       await TuitionService.update(+id, data)
         .then((response) => {
-          console.log(response);
           navigate("/hocphi");
         })
         .catch((error) => {

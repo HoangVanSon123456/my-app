@@ -19,7 +19,6 @@ export default function ListCourse({ listCourse, handleDelete }: IProps) {
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
     navigate(`/hocphan/update/${id}`);
-    console.log(id);
   };
 
   return (

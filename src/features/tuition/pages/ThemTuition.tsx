@@ -29,7 +29,6 @@ export default function ThemTuition() {
   const saveOrUpdateUser = (data: Tuition) => {
     TuitionService.create(data)
       .then((response) => {
-        console.log(response);
         navigate("/hocphi");
       })
       .catch((error) => {

@@ -24,7 +24,6 @@ export default function ThemNotification() {
   const saveOrUpdateUser = (data: Notification) => {
     NotificationService.create(data)
       .then((response) => {
-        console.log(response);
         navigate("/ThongBao");
       })
       .catch((error) => {

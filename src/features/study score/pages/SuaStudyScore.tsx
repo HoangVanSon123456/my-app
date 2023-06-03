@@ -55,7 +55,6 @@ export default function SuaStudyScore() {
     if (id) {
       await StudyScoreService.update(+id, data)
         .then((response) => {
-          console.log(response);
           navigate("/diemhocphan");
         })
         .catch((error) => {

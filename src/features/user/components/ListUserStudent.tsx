@@ -32,7 +32,6 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
     navigate(`/user/update/${id}`);
-    console.log(id);
   };
 
   return (

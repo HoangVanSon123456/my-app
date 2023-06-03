@@ -16,7 +16,6 @@ export default function SearchGiaoVien({ handleSearch, handleReset }: IProps) {
 
   const onSubmit = (data: SearchUser) => {
     handleSearch(data.id || data.name?.trim());
-    console.log(data);
   };
 
   const resetForm = () => {
