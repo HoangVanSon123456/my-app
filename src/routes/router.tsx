@@ -27,7 +27,7 @@ import SectionClassList from "features/section class/pages/SectionClassList";
 import CreateSectionCLass from "features/section class/pages/CreateSectionClass";
 import UpdateSectionCLass from "features/section class/pages/UpdateSectionClass";
 import SectionClassStudentList from "features/section class/pages/SectionClassStudentList";
-import CreateStudentSectionClass from "features/section class/pages/CreateStudentSectionClass";
+import CreateStudentSectionClass from "features/section class/pages/StudentSectionClassList";
 
 const ThemUser = React.lazy(() => import("features/user/pages/ThemUser"));
 const EditUser = React.lazy(() => import("features/user/pages/EditUser"));

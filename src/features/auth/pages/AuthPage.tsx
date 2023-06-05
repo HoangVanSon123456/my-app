@@ -1,9 +1,7 @@
-import { useEffect, useLayoutEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useLayoutEffect } from "react";
+import { Outlet } from "react-router-dom";
 
 export default function AuthPage() {
-  const navigate = useNavigate();
-
   useLayoutEffect(() => {
     document.body.classList.add("blank-page");
   }, []);

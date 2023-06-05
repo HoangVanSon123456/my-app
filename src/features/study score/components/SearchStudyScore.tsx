@@ -1,9 +1,33 @@
+import SearchCourse from "features/course";
 import { useForm } from "react-hook-form";
+interface IProps {
+  handleSearch: Function;
+  handleReset: Function;
+}
 
-export default function SearchStudyScore() {
-  const { register, handleSubmit } = useForm();
+SearchStudyScore.defaultProps = {
+  handleSearch: null,
+  handleReset: null,
+};
 
-  const onSubmit = () => {};
+export default function SearchStudyScore({
+  handleSearch,
+  handleReset,
+}: IProps) {
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = (data: SearchCourse) => {
+    handleSearch(data.name?.trim());
+    console.log(data);
+  };
+
+  const resetForm = () => {
+    handleReset();
+    reset({
+      name: "",
+    });
+  };
+
   return (
     <div className="card">
       <div className="card-header mb-1">
@@ -12,21 +36,11 @@ export default function SearchStudyScore() {
       <div className="card-body">
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
           <div className="row">
-            <div className="col-sm-6 col-6">
-              <div className="mb-1">
-                <label className="form-label">Mã Học Phần</label>
-                <input
-                  {...register("searchText")}
-                  type="text"
-                  className="form-control"
-                />
-              </div>
-            </div>
-            <div className="col-sm-6 col-6">
+            <div className="col-sm-12 col-6">
               <div className="mb-1">
                 <label className="form-label">Tên Học Phần</label>
                 <input
-                  {...register("searchText")}
+                  {...register("name")}
                   type="text"
                   className="form-control"
                 />
@@ -34,8 +48,11 @@ export default function SearchStudyScore() {
             </div>
 
             <div className="col-12 text-end">
-              <button className="btn btn-outline-secondary waves-effect me-2">
-                Reset
+              <button
+                className="btn btn-outline-secondary waves-effect me-2"
+                onClick={resetForm}
+              >
+                Đặt lại
               </button>
               <button className="btn btn-success">Tìm kiếm</button>
             </div>

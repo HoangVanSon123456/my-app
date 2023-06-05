@@ -5,10 +5,14 @@ import StudyScore from "types/StudyScore";
 import ListStudyScore from "../components/ListStudyScore";
 import SearchStudyScore from "../components/SearchStudyScore";
 import StudyScoreService from "services/StudyScore";
+import ModalConfirm from "components/layout/ModalConfirm";
+import CourseService from "services/CourseService";
 
 export default function StudyScoreList() {
   const [listStudyScore, setStudyScoreList] = useState<StudyScore[]>([]);
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const [itemId, setItemId] = useState(0);
 
   useEffect(() => {
     getList();
@@ -27,34 +31,88 @@ export default function StudyScoreList() {
   };
 
   const handleDelete = async (id: number) => {
-    await StudyScoreService.deleteItem(id)
-      .then(() => getList())
+    if (id > 0) {
+      setShow(true);
+      setItemId(id);
+    }
+  };
+
+  const deleteItem = async () => {
+    if (itemId > 0) {
+      await StudyScoreService.deleteItem(itemId)
+        .then(() => getList())
+        .catch((err) => console.log(err));
+      setShow(false);
+    }
+  };
+
+  const handleSearch = async (keyword: string) => {
+    await CourseService.searchCourse(keyword)
+      .then((res) => {
+        setStudyScoreList(res);
+      })
       .catch((err) => console.log(err));
+  };
+
+  const handleReset = () => {
+    getList();
   };
   return (
     <>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        spacing={4}
-        sx={{ marginBottom: "15px" }}
-      >
-        <Stack>
-          <Typography variant="h4">Điểm Học Phần</Typography>
-        </Stack>
-        <Button
-          variant="contained"
-          onClick={handleClickOpen}
-          sx={{ borderRadius: "10px", backgroundColor: "#4caf50" }}
-        >
-          Thêm Điểm
-        </Button>
-      </Stack>
-      <SearchStudyScore />
-      <ListStudyScore
-        listStudyScore={listStudyScore}
-        handleDelete={handleDelete}
-      />
+      <div className="content-header row">
+        <div className="content-header-left col-md-9 col-12 mb-2">
+          <div className="row breadcrumbs-top">
+            <div className="col-12">
+              <h2 className="content-header-title float-start mb-0">
+                Điểm Học Phần
+              </h2>
+              <div className="breadcrumb-wrapper">
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">
+                    <a href="/">Trang chủ</a>
+                  </li>
+                  <li className="breadcrumb-item">
+                    <a href="/lophocphan">Điểm Học Phần</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+          <div className="mb-1 breadcrumb-right">
+            <button
+              type="button"
+              className="btn btn-primary btn-10px"
+              onClick={handleClickOpen}
+            >
+              Thêm học phần
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="content-body">
+        <div className="row">
+          <div className="col-12">
+            <SearchStudyScore
+              handleSearch={handleSearch}
+              handleReset={handleReset}
+            />
+            <div className="card">
+              <ListStudyScore
+                listStudyScore={listStudyScore}
+                handleDelete={handleDelete}
+              />
+            </div>
+          </div>
+          <ModalConfirm
+            show={show}
+            text="Bạn thực sự muốn xoá đối tượng này?"
+            changeShow={(s: boolean) => setShow(s)}
+            submitAction={deleteItem}
+          />
+        </div>
+      </div>
     </>
   );
 }

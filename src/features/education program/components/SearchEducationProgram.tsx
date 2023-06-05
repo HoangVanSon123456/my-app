@@ -35,7 +35,7 @@ export default function SearchEducationProgram() {
 
             <div className="col-12 text-end">
               <button className="btn btn-outline-secondary waves-effect me-2">
-                Reset
+                Đặt lại
               </button>
               <button className="btn btn-success">Tìm kiếm</button>
             </div>

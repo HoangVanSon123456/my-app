@@ -51,7 +51,7 @@ export default function SearchNotificationForm({
                 className="btn btn-outline-secondary waves-effect me-2"
                 onClick={resetForm}
               >
-                Reset
+                Đặt lại
               </button>
               <button className="btn btn-success">Tìm kiếm</button>
             </div>

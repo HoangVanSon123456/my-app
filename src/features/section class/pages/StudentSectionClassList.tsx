@@ -8,7 +8,7 @@ import UserService from "services/UserService";
 import StudentSectionClass from "types/StudentSectionClass";
 import { SelectOption } from "types/common/Item";
 
-export default function CreateStudentSectionClass() {
+export default function StudentSectionClassList() {
   const navigator = useNavigate();
   const [listStudent, setListStudent] = useState([]);
   const { handleSubmit, reset, setValue } = useForm({});
