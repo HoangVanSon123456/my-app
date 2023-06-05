@@ -23,6 +23,9 @@ import EducationProgramCourse from "features/education program/pages/EducationPr
 import SinhVien from "features/user/pages/SinhVien";
 import ThemEducationProgramCourse from "features/education program/pages/ThemEducationProgramCourse";
 import GetProfile from "features/user/pages/GetProfile";
+import SectionClassList from "features/section class/pages/SectionClassList";
+import CreateSectionCLass from "features/section class/pages/CreateSectionClass";
+import UpdateSectionCLass from "features/section class/pages/UpdateSectionClass";
 
 const ThemUser = React.lazy(() => import("features/user/pages/ThemUser"));
 const EditUser = React.lazy(() => import("features/user/pages/EditUser"));
@@ -256,6 +259,36 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <SuaCourse />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lophocphan"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SectionClassList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lophocphan/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <CreateSectionCLass />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lophocphan/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <UpdateSectionCLass />
                 </Suspense>
               </PrivateRoute>
             }

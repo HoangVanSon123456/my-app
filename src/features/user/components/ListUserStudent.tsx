@@ -1,15 +1,3 @@
-import {
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import User from "types/User";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -38,7 +26,7 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
     <table className="datatables-basic table">
       <thead>
         <tr>
-          {/* <th className="text-center">id</th> */}
+          <th className="text-center">STT</th>
           <th className="text-center">Tên</th>
           <th className="text-center">Họ và tên</th>
           <th className="text-center">Địa chỉ</th>
@@ -52,7 +40,7 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
       <tbody>
         {listUsers.map((item: User, index: number) => (
           <tr key={item.id}>
-            {/* <th className="text-center">{item?.id}</th> */}
+            <th className="text-center">{index + 1}</th>
             <td className="text-center">{item?.name}</td>
             <td className="text-center">{item?.useName}</td>
             <td className="text-center">{item?.address}</td>
