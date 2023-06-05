@@ -18,10 +18,20 @@ export default function Nav() {
               </span>
             </a>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a className="" href="/SinhVien">
               <span className="menu-title text-truncate" data-i18n="user">
                 Sinh Viên
+              </span>
+            </a>
+          </li> */}
+          <li className="nav-item">
+            <a className="" href="/lophocphan">
+              <span
+                className="menu-title text-truncate"
+                data-i18n="notification"
+              >
+                Lớp học phần
               </span>
             </a>
           </li>
@@ -72,16 +82,6 @@ export default function Nav() {
                 data-i18n="notification"
               >
                 Điểm Học Phần
-              </span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="" href="/lophocphan">
-              <span
-                className="menu-title text-truncate"
-                data-i18n="notification"
-              >
-                Lớp học phần
               </span>
             </a>
           </li>

@@ -26,6 +26,8 @@ import GetProfile from "features/user/pages/GetProfile";
 import SectionClassList from "features/section class/pages/SectionClassList";
 import CreateSectionCLass from "features/section class/pages/CreateSectionClass";
 import UpdateSectionCLass from "features/section class/pages/UpdateSectionClass";
+import SectionClassStudentList from "features/section class/pages/SectionClassStudentList";
+import CreateStudentSectionClass from "features/section class/pages/CreateStudentSectionClass";
 
 const ThemUser = React.lazy(() => import("features/user/pages/ThemUser"));
 const EditUser = React.lazy(() => import("features/user/pages/EditUser"));
@@ -289,6 +291,26 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <UpdateSectionCLass />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lophocphan/getStudent/:sectionClassId"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SectionClassStudentList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lophocphan/createStudent"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <CreateStudentSectionClass />
                 </Suspense>
               </PrivateRoute>
             }

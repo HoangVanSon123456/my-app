@@ -1,6 +1,5 @@
-import { find, get } from "lodash";
-import { ToastOptions, toast } from "react-toastify";
 import Course from "types/Course";
+import User from "types/User";
 import { ItemParam, SelectOption } from "types/common/Item";
 
 export const selectItem = (listItems: ItemParam[], noNoneOption?: boolean) => {
@@ -28,6 +27,17 @@ export const convertToSelectOptions = (items: Course[]) => {
     selectOptions.push({
       value: item.id!,
       label: item.name!,
+    });
+  });
+  return selectOptions;
+};
+
+export const convertToSelectOptionsUser = (items: User[]) => {
+  const selectOptions: SelectOption[] = [];
+  items.forEach((item) => {
+    selectOptions.push({
+      value: item.id!,
+      label: item.useName!,
     });
   });
   return selectOptions;

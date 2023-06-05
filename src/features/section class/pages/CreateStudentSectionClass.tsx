@@ -1,28 +1,27 @@
+import { convertToSelectOptionsUser } from "components/common/common";
+import { map } from "lodash";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import CourseService from "services/CourseService";
-import EducationProgramService from "services/EducationProgramService";
-import Course from "types/Course";
-import EduProCourse from "types/EduProCourse";
 import { MultiSelect } from "react-multi-select-component";
+import { useNavigate } from "react-router-dom";
+import UserService from "services/UserService";
+import StudentSectionClass from "types/StudentSectionClass";
 import { SelectOption } from "types/common/Item";
-import { convertToSelectOptions } from "components/common/common";
-import { map } from "lodash";
 
-export default function ThemEducationProgramCourse() {
+export default function CreateStudentSectionClass() {
   const navigator = useNavigate();
-  const [listCourse, setCoulistCourseList] = useState([]);
-  const { register, handleSubmit, reset, setValue } = useForm({});
+  const [listStudent, setListStudent] = useState([]);
+  const { handleSubmit, reset, setValue } = useForm({});
   const [selected, setSelected] = useState<SelectOption[]>([]);
   console.log(selected);
+
   const handleBack = () => {
     navigator(-1);
   };
 
-  const saveOrUpdateUser = async (data: EduProCourse) => {
+  const saveOrUpdateUser = async (data: StudentSectionClass) => {
     console.log(data);
-    await EducationProgramService.createCourseEdu(data)
+    await UserService.createStudentBySectionClass(data)
       .then((res) => {
         console.log(res);
         navigator(-1);
@@ -32,7 +31,7 @@ export default function ThemEducationProgramCourse() {
 
   const onchangeSelect = (option: SelectOption[]) => {
     setSelected([...option]);
-    setValue("courseIds", map(option, "value"));
+    setValue("userId", map(option, "value"));
   };
 
   useEffect(() => {
@@ -40,9 +39,9 @@ export default function ThemEducationProgramCourse() {
   }, []);
 
   const getList = async () => {
-    await CourseService.getList()
+    await UserService.getListStrudent()
       .then((res) => {
-        setCoulistCourseList(res.data);
+        setListStudent(res);
       })
       .catch((err) => console.log(err));
   };
@@ -56,7 +55,7 @@ export default function ThemEducationProgramCourse() {
           onReset={reset}
         >
           <MultiSelect
-            options={convertToSelectOptions(listCourse)}
+            options={convertToSelectOptionsUser(listStudent)}
             value={selected}
             onChange={onchangeSelect}
             labelledBy="Select"

@@ -37,7 +37,7 @@ export default function ListSectionClass({
             <tr key={item.id}>
               <td className="text-left">{item?.id}</td>
               <td className="text-left">
-                <Link to={`/chuongtrinhdaotao/getCourse/${item.id}`}>
+                <Link to={`/lophocphan/getStudent/${item.id}`}>
                   <span className="fw-bold">{item?.name}</span>
                 </Link>
               </td>
