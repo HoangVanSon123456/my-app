@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import classNames from "classnames";
-import Notification from "types/Notification";
 import CourseService from "services/CourseService";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { HttpStatusCode } from "axios";
 import Course from "types/Course";
 
 export default function ThemCourse() {
@@ -25,13 +23,13 @@ export default function ThemCourse() {
     resolver: yupResolver(validationSchema),
   });
 
+  const notify = () => toast("Wow so easy!");
+
   const saveCourse = (data: Course) => {
     CourseService.create(data)
       .then(() => {
-        if (HttpStatusCode.Ok == 200) {
-          toast.success("Thanh cong");
-          navigate("/hocphan");
-        }
+        navigate("/hocphan");
+        toast("Wow so easy!");
       })
       .catch((error) => {
         console.log(error);

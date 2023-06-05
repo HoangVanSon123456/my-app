@@ -1,11 +1,10 @@
-import { Button, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NotificationService from "services/NotificationService";
 import Notification from "types/Notification";
 import ListNotification from "../components/ListNotification";
-import SearchNotification from "../components/SearchNotification";
 import ModalConfirm from "components/layout/ModalConfirm";
+import SearchNotificationForm from "../components/SearchNotificationForm";
 
 export default function NotificationList() {
   const [listNotification, setNotificationList] = useState<Notification[]>([]);
@@ -44,6 +43,18 @@ export default function NotificationList() {
       // setItemId(0);
     }
   };
+
+  const handleSearch = async (keyword: string) => {
+    await NotificationService.searchNotification(keyword)
+      .then((res) => {
+        setNotificationList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleReset = () => {
+    getList();
+  };
   return (
     <>
       <div className="content-header row">
@@ -81,9 +92,9 @@ export default function NotificationList() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            <SearchNotification
-            // handleSearch={handleSearch}
-            // handleReset={handleReset}
+            <SearchNotificationForm
+              handleSearch={handleSearch}
+              handleReset={handleReset}
             />
             <div className="card">
               <ListNotification

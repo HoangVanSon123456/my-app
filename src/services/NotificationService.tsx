@@ -31,7 +31,13 @@ const getById = async (id: number) => {
   return data;
 };
 
+const searchNotification = async (keyword: string) => {
+  const { data } = await http.get(`/admin/notification/search/${keyword}`);
+  return data;
+};
+
 const NotificationService = {
+  searchNotification,
   getList,
   create,
   deleteItem,
