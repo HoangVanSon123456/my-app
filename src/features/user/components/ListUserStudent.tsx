@@ -22,6 +22,10 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
     navigate(`/user/update/${id}`);
   };
 
+  const handleDetailStudent = (id: number) => {
+    // navigate(`/user/detailStudent/${id}`);
+    console.log(id);
+  };
   return (
     <table className="datatables-basic table">
       <thead>
@@ -67,7 +71,7 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
                 <button
                   type="button"
                   className="btn btn-outline-warning btn-sm"
-                  // onClick={() => handleEditItem(item.id!)}
+                  onClick={() => handleDetailStudent(item.id!)}
                 >
                   <Eye size={16} />
                 </button>

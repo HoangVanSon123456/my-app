@@ -36,7 +36,7 @@ export default function LoginFrom() {
     await AuthService.login(data.email!, data.password!).then((res) => {
       if (HttpStatusCode.Ok === 200) {
         setLocalStorage(AUTH_KEYS.ACCESS_TOKEN, res.data.accessToken || "");
-        navigator("/GiaoVien");
+        navigator("/trangchu");
       }
     });
   };

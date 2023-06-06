@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import NotificationService from "services/NotificationService";
-import StudyScoreService from "services/StudyScore";
+import StudyScoreService from "services/StudyScoreService";
 import Notification from "types/Notification";
 import StudyScore from "types/StudyScore";
 import * as Yup from "yup";

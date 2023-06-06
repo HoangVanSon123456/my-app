@@ -1,4 +1,5 @@
-import { Eye, Trash } from "react-feather";
+import { Edit, Eye, Trash } from "react-feather";
+import { useNavigate } from "react-router-dom";
 import User from "types/User";
 interface IProps {
   listUsers: User[];
@@ -13,6 +14,10 @@ export default function ListSectionClassStudent({
   listUsers,
   handleDelete,
 }: IProps) {
+  const navigate = useNavigate();
+  const handleDetailStudent = (id: number) => {
+    navigate(`/user/detailStudent/${id}`);
+  };
   return (
     <>
       <table className="datatables-basic table">
@@ -51,8 +56,15 @@ export default function ListSectionClassStudent({
                   </button>
                   <button
                     type="button"
-                    className="btn btn-outline-warning btn-sm mx-1"
+                    className="btn btn-outline-info btn-sm mx-1"
                     // onClick={() => handleEditItem(item.id!)}
+                  >
+                    <Edit size={16} />
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline-warning btn-sm"
+                    onClick={() => handleDetailStudent(item.id!)}
                   >
                     <Eye size={16} />
                   </button>

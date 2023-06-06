@@ -30,7 +30,7 @@ export default function ListTuition({ listTuition, handleDelete }: IProps) {
           <th className="text-center">STT</th>
           <th className="text-center">Loại học phí</th>
           <th className="text-center">Học kỳ</th>
-          <th className="text-center">Số tín chỉ</th>
+          <th className="text-center">Tổng tín chỉ</th>
           <th className="text-center">Số tiền</th>
           <th className="text-center">Miễn giảm</th>
           <th className="text-center">Học lại</th>

@@ -35,7 +35,7 @@ export default function CreateSectionCLass() {
   return (
     <>
       <div className="card">
-        <div className="card-header h2">Thêm thông báo</div>
+        <div className="card-header h2">Thêm lớp học phần</div>
         <form
           className="row p-2 g-2"
           onSubmit={handleSubmit(saveSectionClass)}

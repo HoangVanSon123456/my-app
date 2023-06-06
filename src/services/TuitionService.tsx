@@ -2,12 +2,20 @@ import Tuition from "types/Tuition";
 import http from "./http";
 
 const getList = async () => {
-  const { data } = await http.get("/admin/tuition");
+  const { data } = await http.get("/admin/user_tuition", {
+    headers: {
+      userId: localStorage.getItem("userId"),
+    },
+  });
   return data;
 };
 
 const create = async (data: Tuition) => {
-  await http.post("/admin/tuition/add", data);
+  await http.post("/admin/tuition/add", data, {
+    headers: {
+      userId: localStorage.getItem("userId"),
+    },
+  });
   return data;
 };
 

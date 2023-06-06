@@ -19,9 +19,11 @@ export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
     navigate(`/user/update/${id}`);
-    console.log(id);
   };
 
+  const handleDetailTeacher = (id: number) => {
+    navigate(`/user/detailTeacher/${id}`);
+  };
   return (
     <table className="datatables-basic table">
       <thead>
@@ -67,6 +69,7 @@ export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
                 <button
                   type="button"
                   className="btn btn-outline-warning btn-sm"
+                  onClick={() => handleDetailTeacher(item.id!)}
                 >
                   <Eye size={16} />
                 </button>

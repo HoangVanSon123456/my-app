@@ -28,6 +28,10 @@ import CreateSectionCLass from "features/section class/pages/CreateSectionClass"
 import UpdateSectionCLass from "features/section class/pages/UpdateSectionClass";
 import SectionClassStudentList from "features/section class/pages/SectionClassStudentList";
 import CreateStudentSectionClass from "features/section class/pages/StudentSectionClassList";
+import HomePage from "features/home/HomePage";
+import UserDetail from "features/user/pages/UserDetailTeacher";
+import UserDetailTeacher from "features/user/pages/UserDetailTeacher";
+import UserDetailStudent from "features/user/pages/UserDetailStudent";
 
 const ThemUser = React.lazy(() => import("features/user/pages/ThemUser"));
 const EditUser = React.lazy(() => import("features/user/pages/EditUser"));
@@ -45,6 +49,16 @@ export default function RouterView() {
             {/* <Route path="forgot" element={<ForgotPage />} />
               <Route path="change-password" element={<ChangePassPage />} /> */}
           </Route>
+          <Route
+            path="/trangchu"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <HomePage />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
           <Route
             path="/GiaoVien"
             element={
@@ -81,6 +95,26 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <EditUser />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/user/detailTeacher/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <UserDetailTeacher />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/user/detailStudent/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <UserDetailStudent />
                 </Suspense>
               </PrivateRoute>
             }

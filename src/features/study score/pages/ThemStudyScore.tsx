@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import classNames from "classnames";
 import StudyScore from "types/StudyScore";
-import StudyScoreService from "services/StudyScore";
+import StudyScoreService from "services/StudyScoreService";
 import { useEffect, useState } from "react";
 import Course from "types/Course";
 import CourseService from "services/CourseService";

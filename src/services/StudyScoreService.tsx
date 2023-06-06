@@ -2,12 +2,20 @@ import StudyScore from "types/StudyScore";
 import http from "./http";
 
 const getList = async () => {
-  const { data } = await http.get("/admin/studyscore");
+  const { data } = await http.get("/admin/user_studyscore", {
+    headers: {
+      userId: localStorage.getItem("userId"),
+    },
+  });
   return data;
 };
 
 const create = async (data: StudyScore) => {
-  await http.post("/admin/studyscore/add", data);
+  await http.post("/admin/studyscore/add", data, {
+    headers: {
+      userId: localStorage.getItem("userId"),
+    },
+  });
   return data;
 };
 

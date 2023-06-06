@@ -3,12 +3,19 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import UserService from "services/UserService";
 
-export default function GetProfile() {
+export default function UserDetailTeacher() {
   const { register, setValue } = useForm();
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id) {
+      getUser(+id);
+    }
+  }, [id]);
 
   const getUser = (id: number) => {
-    UserService.getUser(+id).then((user) => {
+    UserService.getById(+id).then((user) => {
       const fields = [
         "name",
         "useName",
@@ -22,11 +29,9 @@ export default function GetProfile() {
     });
   };
 
-  useEffect(() => {
-    if (id) {
-      getUser(+id);
-    }
-  }, [id]);
+  const handleBack = () => {
+    navigate(-1);
+  };
   return (
     <>
       <div className="container rounded bg-white ">
@@ -43,7 +48,7 @@ export default function GetProfile() {
           <div className="col-md-9 border-right">
             <div className="p-3 py-5">
               <div className="d-flex justify-content-between align-items-center">
-                <h4 className="text-right">Thông tin cá nhân</h4>
+                <h4 className="text-right">Thông tin chi tiết</h4>
               </div>
               <div className="row mt-2">
                 <div className="col-md-6">
@@ -92,6 +97,23 @@ export default function GetProfile() {
                     {...register("email")}
                     readOnly
                   />
+                </div>
+                <div className="col-12 text-end mt-2 ms-2">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-10px me-1"
+                    // onClick={handleClickOpen}
+                  >
+                    Thêm tài liệu
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="btn btn-secondary me-2"
+                    onClick={handleBack}
+                  >
+                    Thoát
+                  </button>
                 </div>
               </div>
             </div>

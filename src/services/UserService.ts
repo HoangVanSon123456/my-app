@@ -33,7 +33,7 @@ const update = (id: number, data: User) => {
 };
 
 const getById = async (id: number) => {
-  const { data } = await http.get(`/member/user/${id}`);
+  const { data } = await http.get(`/admin/user/${id}`);
   return data;
 };
 

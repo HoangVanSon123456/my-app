@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import StudyScore from "types/StudyScore";
 import ListStudyScore from "../components/ListStudyScore";
 import SearchStudyScore from "../components/SearchStudyScore";
-import StudyScoreService from "services/StudyScore";
+import StudyScoreService from "services/StudyScoreService";
 import ModalConfirm from "components/layout/ModalConfirm";
 import CourseService from "services/CourseService";
 
