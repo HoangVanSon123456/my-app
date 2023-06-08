@@ -18,13 +18,13 @@ export default function Nav() {
               </span>
             </a>
           </li>
-          {/* <li className="nav-item">
+          <li className="nav-item">
             <a className="" href="/SinhVien">
               <span className="menu-title text-truncate" data-i18n="user">
                 Sinh Viên
               </span>
             </a>
-          </li> */}
+          </li>
           <li className="nav-item">
             <a className="" href="/lophocphan">
               <span

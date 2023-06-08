@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Course from "types/Course";
 import courseService from "services/CourseService";
-import SearchCourse from "../components/SearchCourseFrom";
 import ModalConfirm from "components/layout/ModalConfirm";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import SearchCourseForm from "../components/SearchCourseFrom";
 
 export default function CourseList() {
   const [listCourse, setCoulistCourseList] = useState<Course[]>([]);
@@ -21,12 +23,12 @@ export default function CourseList() {
   };
 
   const getList = async () => {
-    await courseService
-      .getList()
-      .then((res) => {
-        setCoulistCourseList(res.data);
-      })
-      .catch((err) => console.log(err));
+    const response = await courseService.getList();
+    if (response.status === 200) {
+      const items = response.data;
+      setCoulistCourseList(items);
+      // toast(response.message);
+    }
   };
 
   const handleDelete = async (id: number) => {
@@ -97,7 +99,7 @@ export default function CourseList() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            <SearchCourse
+            <SearchCourseForm
               handleSearch={handleSearch}
               handleReset={handleReset}
             />
@@ -113,6 +115,7 @@ export default function CourseList() {
           />
         </div>
       </div>
+      <ToastContainer autoClose={2000} />
     </>
   );
 }

@@ -29,18 +29,24 @@ export default function ListSectionClass({
           <tr>
             <th className="text-left">STT</th>
             <th className="text-left">Lớp học phần</th>
+            <th className="text-left">Giáo viên</th>
+            <th className="text-left">Chương trình đào tạo</th>
+            <th className="text-left">Học Kì</th>
             <th className="text-left">Thao tác</th>
           </tr>
         </thead>
         <tbody>
           {sectionClassList.map((item: SectionClass, index: number) => (
             <tr key={item.id}>
-              <td className="text-left">{item?.id}</td>
+              <td className="text-left">{index + 1}</td>
               <td className="text-left">
                 <Link to={`/lophocphan/getStudent/${item.id}`}>
                   <span className="fw-bold">{item?.name}</span>
                 </Link>
               </td>
+              <td className="text-left">{item?.userName}</td>
+              <td className="text-left">{item?.educationProgramName}</td>
+              <td className="text-left">{item?.semester}</td>
               <td>
                 <div>
                   <button

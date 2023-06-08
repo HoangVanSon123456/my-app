@@ -1,3 +1,4 @@
+import { ToastOptions, toast } from "react-toastify";
 import Course from "types/Course";
 import User from "types/User";
 import { ItemParam, SelectOption } from "types/common/Item";

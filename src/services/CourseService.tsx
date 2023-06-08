@@ -6,8 +6,8 @@ const getList = async () => {
   return data;
 };
 
-const create = async (data: Course) => {
-  await http.post("/admin/course/add", data);
+const create = async (param: Course) => {
+  const { data } = await http.post("/admin/course/add", param);
   return data;
 };
 

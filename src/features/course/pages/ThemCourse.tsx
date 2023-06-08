@@ -4,9 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import classNames from "classnames";
 import CourseService from "services/CourseService";
+import Course from "types/Course";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Course from "types/Course";
 
 export default function ThemCourse() {
   const navigate = useNavigate();
@@ -23,17 +23,14 @@ export default function ThemCourse() {
     resolver: yupResolver(validationSchema),
   });
 
-  const notify = () => toast("Wow so easy!");
-
-  const saveCourse = (data: Course) => {
-    CourseService.create(data)
-      .then(() => {
-        navigate("/hocphan");
-        toast("Wow so easy!");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const saveCourse = async (data: Course) => {
+    const response = await CourseService.create(data);
+    console.log(response.status);
+    if (response.status === 200) {
+      navigate("/hocphan");
+    } else {
+      toast(response.message);
+    }
   };
 
   const handleBack = () => {

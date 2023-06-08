@@ -16,16 +16,16 @@ export default function EducationProgramList() {
     getList();
   }, []);
 
-  const handleClickOpen = () => {
-    navigate("/chuongtrinhdaotao/create");
-  };
-
   const getList = async () => {
     await EducationProgramService.getList()
       .then((res) => {
         setEducationProgramList(res);
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleClickOpen = () => {
+    navigate("/chuongtrinhdaotao/create");
   };
 
   const handleDelete = async (id: number) => {

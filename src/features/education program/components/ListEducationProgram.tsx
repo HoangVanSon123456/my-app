@@ -34,7 +34,6 @@ export default function ListNotification({
                   <tr>
                     <th>Mã Đào Tạo</th>
                     <th>Tên Chương Trình Đào Tạo</th>
-                    <th>Học Kỳ</th>
                     <th>Thao tác</th>
                   </tr>
                 </thead>
@@ -48,7 +47,6 @@ export default function ListNotification({
                             <span className="fw-bold">{item?.name}</span>
                           </Link>
                         </td>
-                        <td>{item?.semester}</td>
                         <td className="text-left">
                           <div>
                             <button
