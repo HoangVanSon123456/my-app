@@ -31,7 +31,7 @@ export default function ListStudyScore({
           <tr>
             <th className="text-center">STT</th>
             {/* <th className="text-center">Mã Học Phần</th> */}
-            <th className="text-center">Tên Học Phần</th>
+            <th className="text-center">Tên sinh viên</th>
             {/* <th className="text-center">Tín chỉ</th> */}
             <th className="text-center">Số lần học</th>
             <th className="text-center">Đánh giá</th>
@@ -46,9 +46,7 @@ export default function ListStudyScore({
           {listStudyScore.map((item: StudyScore, index: number) => (
             <tr key={item.id}>
               <td className="text-center">{index + 1}</td>
-              {/* {/* <td className="text-center">{item?.courseId}</td> */}
-              <td className="text-center">{item?.courseName}</td>
-              {/* <td className="text-center">{item?.courseCreditName}</td> */}
+              <td className="text-center">{item?.userName}</td>
               <td className="text-center">{item?.studyTimes}</td>
               <td className="text-center">{item?.evaluate}</td>
               <td className="text-center">{item?.processPoint}</td>

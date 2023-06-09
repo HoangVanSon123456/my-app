@@ -6,14 +6,14 @@ import classNames from "classnames";
 import StudyScore from "types/StudyScore";
 import StudyScoreService from "services/StudyScoreService";
 import { useEffect, useState } from "react";
-import Course from "types/Course";
-import CourseService from "services/CourseService";
+import UserService from "services/UserService";
+import User from "types/User";
 
 export default function ThemStudyScore() {
-  const [listCourse, setCoulistCourseList] = useState<Course[]>([]);
+  const [listUsers, setListUsers] = useState<User[]>([]);
   const navigate = useNavigate();
   const validationSchema = Yup.object({
-    courseId: Yup.string().required("Please Enter your name"),
+    userId: Yup.string().required("Please Enter your name"),
     evaluate: Yup.string().required("Please Enter your username"),
     studyTimes: Yup.string().required("Please Enter your username"),
     processPoint: Yup.string().required("Please Enter your username"),
@@ -31,21 +31,23 @@ export default function ThemStudyScore() {
   });
 
   useEffect(() => {
-    getList();
+    getListUsers();
   }, []);
 
-  const getList = async () => {
-    await CourseService.getList()
+  const getListUsers = async () => {
+    await UserService.getListStrudent()
       .then((res) => {
-        setCoulistCourseList(res.data);
+        setListUsers(res);
       })
       .catch((err) => console.log(err));
   };
 
   const saveStudyScore = (data: StudyScore) => {
-    StudyScoreService.create(data)
+    StudyScoreService.createStudyScoreBySectionClass(data)
       .then((response) => {
-        navigate("/diemhocphan");
+        console.log(response);
+        const result = localStorage.getItem("sectionScoreId");
+        navigate(`/lophocphan/getStudent/${result}`);
       })
       .catch((error) => {
         console.log(error);
@@ -53,7 +55,8 @@ export default function ThemStudyScore() {
   };
 
   const handleBack = () => {
-    navigate("/diemhocphan");
+    const result = localStorage.getItem("sectionScoreId");
+    navigate(`/lophocphan/getStudent/${result}`);
   };
   return (
     <>
@@ -66,11 +69,11 @@ export default function ThemStudyScore() {
         >
           <div className="col-md-4">
             <label htmlFor="content" className="form-label d-block text-start">
-              Học phầns
+              Tên sinh viên
             </label>
-            <select {...register("courseId")} className="form-select">
+            <select {...register("userId")} className="form-select">
               <option value={0}>--</option>
-              {listCourse.map((la) => (
+              {listUsers.map((la) => (
                 <option key={la.id} value={la.id}>
                   {la.name}
                 </option>

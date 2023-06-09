@@ -19,15 +19,15 @@ export default function StudentSectionClassList() {
     navigator(-1);
   };
 
-  const saveOrUpdateUser = async (data: StudentSectionClass) => {
-    console.log(data);
-    await UserService.createStudentBySectionClass(data)
-      .then((res) => {
-        console.log(res);
-        navigator(-1);
-      })
-      .catch((err) => console.log(err));
-  };
+  // const saveOrUpdateUser = async (data: StudentSectionClass) => {
+  //   console.log(data);
+  //   await UserService.createStudentBySectionClass(data)
+  //     .then((res) => {
+  //       console.log(res);
+  //       navigator(-1);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   const onchangeSelect = (option: SelectOption[]) => {
     setSelected([...option]);
@@ -51,7 +51,7 @@ export default function StudentSectionClassList() {
         <div className="card-header h2">Thêm Môn Học Chương Trình Đào Tạo</div>
         <form
           className="row p-2 g-2"
-          onSubmit={handleSubmit(saveOrUpdateUser)}
+          // onSubmit={handleSubmit(saveOrUpdateUser)}
           onReset={reset}
         >
           <MultiSelect

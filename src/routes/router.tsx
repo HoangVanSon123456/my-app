@@ -330,7 +330,7 @@ export default function RouterView() {
             }
           ></Route>
           <Route
-            path="/lophocphan/getStudent/:sectionClassId"
+            path="/lophocphan/getStudent/:sectionScoreId"
             element={
               <PrivateRoute>
                 <Suspense>
@@ -344,7 +344,7 @@ export default function RouterView() {
             element={
               <PrivateRoute>
                 <Suspense>
-                  <CreateStudentSectionClass />
+                  <ThemStudyScore />
                 </Suspense>
               </PrivateRoute>
             }

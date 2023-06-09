@@ -5,12 +5,15 @@ import User from "types/User";
 import ListSectionClassStudent from "../components/ListSectionClassStudent";
 import ModalConfirm from "components/layout/ModalConfirm";
 import SearchGiaoVien from "features/user/components/SearchUserForm";
+import StudyScoreService from "services/StudyScoreService";
+import StudyScore from "types/StudyScore";
 
 export default function SectionClassStudentList() {
-  const [listUsers, setListUsers] = useState<User[]>([]);
+  const [listStudyScore, setStudyScoreList] = useState<StudyScore[]>([]);
   const navigate = useNavigate();
-  const { sectionClassId } = useParams();
+  const { sectionScoreId } = useParams();
   const [show, setShow] = useState(false);
+
   const handleDelete = async (id: number) => {
     // if (id > 0) {
     //   setShow(true);
@@ -19,16 +22,16 @@ export default function SectionClassStudentList() {
   };
 
   useEffect(() => {
-    if (sectionClassId) {
-      getStudentSectionClass(+sectionClassId);
+    if (sectionScoreId) {
+      getStudentSectionClass(+sectionScoreId);
     }
-  }, [sectionClassId]);
+  }, [sectionScoreId]);
 
-  const getStudentSectionClass = async (sectionClassId: number) => {
-    await UserService.getStudentBySectionClass(sectionClassId)
+  const getStudentSectionClass = async (sectionScoreId: number) => {
+    await StudyScoreService.getStudyScoreBySectionClass(sectionScoreId)
       .then((res) => {
-        setListUsers(res);
-        localStorage.setItem("sectionClassId", String(sectionClassId));
+        setStudyScoreList(res);
+        localStorage.setItem("sectionScoreId", String(sectionScoreId));
       })
       .catch((err) => console.log(err));
   };
@@ -49,14 +52,14 @@ export default function SectionClassStudentList() {
   const handleSearch = async (keyword: string) => {
     await UserService.searchUser(keyword)
       .then((res) => {
-        setListUsers(res);
+        setStudyScoreList(res);
       })
       .catch((err) => console.log(err));
   };
 
   const handleReset = () => {
-    if (sectionClassId) {
-      getStudentSectionClass(+sectionClassId);
+    if (sectionScoreId) {
+      getStudentSectionClass(+sectionScoreId);
     }
   };
 
@@ -103,7 +106,7 @@ export default function SectionClassStudentList() {
             />
             <div className="card">
               <ListSectionClassStudent
-                listUsers={listUsers}
+                listStudyScore={listStudyScore}
                 handleDelete={handleDelete}
               />
             </div>

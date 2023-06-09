@@ -2,7 +2,6 @@ import User from "types/User";
 import http from "./http";
 import { getLocalStorage } from "configs/localStorage";
 import { AUTH_KEYS } from "configs/auth";
-import StudentSectionClass from "types/StudentSectionClass";
 
 const getListTeacher = async () => {
   const { data } = await http.get("/admin/teacher");
@@ -60,24 +59,9 @@ const searchUser = async (keyword: string) => {
   return data;
 };
 
-const getStudentBySectionClass = async (sectionClassId: number) => {
-  const { data } = await http.get(`/admin/studentClass/${sectionClassId}`);
-  return data;
-};
-
-const createStudentBySectionClass = async (data: StudentSectionClass) => {
-  await http.post("/admin/studentClass/add", data, {
-    headers: {
-      sectionClassId: localStorage.getItem("sectionClassId"),
-    },
-  });
-  return data;
-};
-
 const UserService = {
   getListAll,
-  createStudentBySectionClass,
-  getStudentBySectionClass,
+
   getUserToken,
   getUser,
   searchUser,

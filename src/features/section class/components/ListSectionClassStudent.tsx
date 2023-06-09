@@ -1,17 +1,18 @@
 import { Edit, Eye, Trash } from "react-feather";
 import { useNavigate } from "react-router-dom";
+import StudyScore from "types/StudyScore";
 import User from "types/User";
 interface IProps {
-  listUsers: User[];
+  listStudyScore: User[];
   handleDelete: Function;
 }
 
 ListSectionClassStudent.defaultProps = {
-  listUsers: [],
+  listStudyScore: [],
   handleDelete: null,
 };
 export default function ListSectionClassStudent({
-  listUsers,
+  listStudyScore,
   handleDelete,
 }: IProps) {
   const navigate = useNavigate();
@@ -24,27 +25,27 @@ export default function ListSectionClassStudent({
         <thead>
           <tr>
             <th className="text-center">STT</th>
-            <th className="text-center">Tên</th>
-            <th className="text-center">Họ và tên</th>
-            <th className="text-center">Địa chỉ</th>
-            <th className="text-center">Email</th>
-            <th className="text-center">Tuổi</th>
-            <th className="text-center">Số điện thoại</th>
-            <th className="text-center">Giới tính</th>
+            <th className="text-center">Tên học sinh</th>
+            <th className="text-center">Số lần học</th>
+            <th className="text-center">Đánh giá</th>
+            <th className="text-center">Điểm quá trình</th>
+            <th className="text-center">Điểm thi</th>
+            <th className="text-center">Điểm Tổng kết</th>
+            <th className="text-center">Điểm chữ</th>
             <th className="text-left">Thao tác</th>
           </tr>
         </thead>
         <tbody>
-          {listUsers.map((item: User, index: number) => (
+          {listStudyScore.map((item: StudyScore, index: number) => (
             <tr key={item.id}>
-              <th className="text-center">{index + 1}</th>
-              <td className="text-center">{item?.name}</td>
-              <td className="text-center">{item?.useName}</td>
-              <td className="text-center">{item?.address}</td>
-              <td className="text-center">{item?.email}</td>
-              <td className="text-center">{item?.age}</td>
-              <td className="text-center">{item?.phone}</td>
-              <td className="text-center">{item?.gender}</td>
+              <td className="text-center">{index + 1}</td>
+              <td className="text-center">{item?.userName}</td>
+              <td className="text-center">{item?.studyTimes}</td>
+              <td className="text-center">{item?.evaluate}</td>
+              <td className="text-center">{item?.processPoint}</td>
+              <td className="text-center">{item?.testScore}</td>
+              <td className="text-center">{item?.endPoint}</td>
+              <td className="text-center">{item?.letterPoint}</td>
               <td>
                 <div>
                   <button
@@ -61,13 +62,13 @@ export default function ListSectionClassStudent({
                   >
                     <Edit size={16} />
                   </button>
-                  <button
+                  {/* <button
                     type="button"
                     className="btn btn-outline-warning btn-sm"
                     onClick={() => handleDetailStudent(item.id!)}
                   >
                     <Eye size={16} />
-                  </button>
+                  </button> */}
                 </div>
               </td>
             </tr>

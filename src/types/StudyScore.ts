@@ -6,7 +6,6 @@ export default interface StudyScore {
   testScore?: number;
   endPoint?: number;
   letterPoint?: number;
-  courseId?: number;
-  courseName?: string;
-  courseCreditName?: number;
+  userId?: number;
+  userName?: string;
 }
