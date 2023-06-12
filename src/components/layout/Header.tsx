@@ -98,44 +98,6 @@ export default function Header() {
                 </li>
               </ul>
             </div>
-            {/* <ul className="nav navbar-nav align-items-center ms-auto">
-              <li className="nav-item dropdown dropdown-user">
-                <a
-                  className="nav-link dropdown-toggle dropdown-user-link"
-                  id="dropdown-user"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <div className="user-nav d-sm-flex d-none">
-                    <span className="user-name fw-bolder">John Doe</span>
-                    <span className="user-status">Admin</span>
-                  </div>
-                  <span className="avatar">
-                    <img
-                      className="round"
-                      src="../../../app-assets/images/portrait/small/avatar-s-11.jpg"
-                      alt="avatar"
-                      height={40}
-                      width={40}
-                    />
-                    <span className="avatar-status-online" />
-                  </span>
-                </a>
-                <div
-                  className="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="dropdown-user"
-                >
-                  <a className="dropdown-item" href="page-profile.html">
-                    <i className="me-50" data-feather="user" /> Profile
-                  </a>
-                  <a className="dropdown-item" href="auth-login-cover.html">
-                    <i className="me-50" data-feather="power" /> Logout
-                  </a>
-                </div>
-              </li>
-            </ul> */}
             <div style={{ display: "block", marginLeft: "950px" }}>
               <Dropdown>
                 <Dropdown.Toggle variant="success">
@@ -145,7 +107,9 @@ export default function Header() {
                   <Dropdown.Item onClick={handleGetProfile}>
                     Trang cá nhân
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                  <Dropdown.Item onClick={handleLogout}>
+                    Đăng xuất
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </div>

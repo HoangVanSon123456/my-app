@@ -60,9 +60,9 @@ export default function LoginFrom() {
         </div>
         <div className="mb-1">
           <div className="d-flex justify-content-between">
-            <label className="form-label">Password</label>
+            <label className="form-label">Mật khẩu</label>
             <Link to="/forgot">
-              <small>Forgot Password?</small>
+              <small>Quên mật khẩu</small>
             </Link>
           </div>
           <div className="input-group input-group-merge form-password-toggle">
@@ -82,22 +82,7 @@ export default function LoginFrom() {
           </div>
           <span className="error">{errors?.password?.message?.toString()}</span>
         </div>
-        <div className="mb-1">
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              id="remember-me"
-              type="checkbox"
-              tabIndex={3}
-              {...register("isRemember")}
-            />
-            <label className="form-check-label" htmlFor="remember-me">
-              {" "}
-              Remember Me
-            </label>
-          </div>
-        </div>
-        <button className="btn btn-success w-100">Submit</button>
+        <button className="btn btn-success w-100">Đăng nhập</button>
       </form>
     </>
   );

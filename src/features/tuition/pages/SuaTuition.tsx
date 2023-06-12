@@ -13,11 +13,8 @@ export default function SuaTuition() {
   const validationSchema = Yup.object({
     tuitionType: Yup.string().required("Please Enter your name"),
     semester: Yup.string().required("Please Enter your username"),
-    creditName: Yup.string().required("Please Enter your name"),
-    price: Yup.string().required("Please Enter your username"),
-    discount: Yup.string().required("Please Enter your name"),
-    reLearn: Yup.string().required("Please Enter your username"),
     intoMoney: Yup.string().required("Please Enter your name"),
+    status: Yup.string().required("Please Enter your name"),
   }).required();
   const {
     register,
@@ -31,16 +28,7 @@ export default function SuaTuition() {
 
   const getTuition = (id: number) => {
     TuitionService.getById(+id).then((tuition) => {
-      const fields = [
-        "tuitionType",
-        "semester",
-        "creditName",
-        "price",
-        "discount",
-        "reLearn",
-        "intoMoney",
-        "id",
-      ];
+      const fields = ["tuitionType", "semester", "intoMoney", "status", "id"];
       fields.forEach((field) => setValue(field, tuition[field]));
     });
   };
@@ -99,53 +87,18 @@ export default function SuaTuition() {
               {...register("semester")}
             />
           </div>
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Số tín chỉ
+          <div className="col-md-3">
+            <label htmlFor="status" className="form-label d-block text-start">
+              Trạng thái
             </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.creditName?.message),
-              })}
-              {...register("creditName")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Số tiền
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.price?.message),
-              })}
-              {...register("price")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Miễn Giảm
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.discount?.message),
-              })}
-              {...register("discount")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Học lại
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.reLearn?.message),
-              })}
-              {...register("reLearn")}
-            />
+            <select
+              {...register("status")}
+              className="form-select"
+              aria-label="Default select example"
+            >
+              <option value="chuadong">Chứ đóng học phí</option>
+              <option value="dong">Đã đóng học phí</option>
+            </select>
           </div>
           <div className="col-md-4">
             <label htmlFor="title" className="form-label d-block text-start">

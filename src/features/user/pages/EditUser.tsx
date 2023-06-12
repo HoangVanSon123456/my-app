@@ -27,6 +27,7 @@ export default function SuaGiaoVien() {
         "age",
         "phone",
         "role",
+        "userPosition",
         "id",
       ];
       fields.forEach((field) => setValue(field, user[field]));
@@ -43,7 +44,11 @@ export default function SuaGiaoVien() {
     if (id) {
       await UserService.update(+id, data)
         .then((response) => {
-          navigate("/GiaoVien");
+          if (response.data.userPosition == "TEACHER") {
+            navigate("/GiaoVien");
+          } else {
+            navigate("/SinhVien");
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -147,6 +152,19 @@ export default function SuaGiaoVien() {
             >
               <option value="nam">Nam</option>
               <option value="nu">Nữ</option>
+            </select>
+          </div>
+          <div className="col-md-3">
+            <label htmlFor="roles" className="form-label d-block text-start">
+              Chức vụ
+            </label>
+            <select
+              {...register("userPosition")}
+              className="form-select"
+              aria-label="Default select example"
+            >
+              <option value="TEACHER">Giáo Viên</option>
+              <option value="STUDENT">Sinh viên</option>
             </select>
           </div>
           <div className="col-12 text-end">

@@ -72,53 +72,18 @@ export default function ThemTuition() {
               {...register("semester")}
             />
           </div>
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Số tín chỉ
+          <div className="col-md-3">
+            <label htmlFor="roles" className="form-label d-block text-start">
+              Trạng thái
             </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.creditName?.message),
-              })}
-              {...register("creditName")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Số tiền
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.price?.message),
-              })}
-              {...register("price")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Miễn Giảm
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.discount?.message),
-              })}
-              {...register("discount")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Học lại
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.reLearn?.message),
-              })}
-              {...register("reLearn")}
-            />
+            <select
+              {...register("status")}
+              className="form-select"
+              aria-label="Default select example"
+            >
+              <option value="chuadong">Chứ đóng học phí</option>
+              <option value="dong">Đã đóng học phí</option>
+            </select>
           </div>
           <div className="col-md-4">
             <label htmlFor="title" className="form-label d-block text-start">

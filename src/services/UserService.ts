@@ -61,7 +61,6 @@ const searchUser = async (keyword: string) => {
 
 const UserService = {
   getListAll,
-
   getUserToken,
   getUser,
   searchUser,

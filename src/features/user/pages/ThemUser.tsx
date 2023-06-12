@@ -38,7 +38,11 @@ export default function ThemGiaoVien() {
     setLoadingUpdate(true);
     UserService.create(data)
       .then((response) => {
-        navigate("/GiaoVien");
+        if (response.userPosition == "TEACHER") {
+          navigate("/GiaoVien");
+        } else {
+          navigate("/SinhVien");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -162,6 +166,19 @@ export default function ThemGiaoVien() {
           >
             <option value="nam">Nam</option>
             <option value="nu">Nữ</option>
+          </select>
+        </div>
+        <div className="col-md-3">
+          <label htmlFor="roles" className="form-label d-block text-start">
+            Chức vụ
+          </label>
+          <select
+            {...register("userPosition")}
+            className="form-select"
+            aria-label="Default select example"
+          >
+            <option value="TEACHER">Giáo Viên</option>
+            <option value="STUDENT">Sinh viên</option>
           </select>
         </div>
         <div className="col-12 text-end">

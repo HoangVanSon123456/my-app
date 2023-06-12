@@ -30,10 +30,7 @@ export default function ListTuition({ listTuition, handleDelete }: IProps) {
           <th className="text-center">STT</th>
           <th className="text-center">Loại học phí</th>
           <th className="text-center">Học kỳ</th>
-          <th className="text-center">Tổng tín chỉ</th>
-          <th className="text-center">Số tiền</th>
-          <th className="text-center">Miễn giảm</th>
-          <th className="text-center">Học lại</th>
+          <th className="text-center">Trạng thái</th>
           <th className="text-center">Thành tiền</th>
           <th className="text-left">Thao Tác</th>
         </tr>
@@ -44,10 +41,7 @@ export default function ListTuition({ listTuition, handleDelete }: IProps) {
             <td className="text-center">{item?.id}</td>
             <td className="text-center">{item?.tuitionType}</td>
             <td className="text-center">{item?.semester}</td>
-            <td className="text-center">{item?.creditName}</td>
-            <td className="text-center">{item?.price}</td>
-            <td className="text-center">{item?.discount}</td>
-            <td className="text-center">{item?.reLearn}</td>
+            <td className="text-center">{item?.status}</td>
             <td className="text-center">{item?.intoMoney}</td>
             <td>
               <div className="d-flex">
