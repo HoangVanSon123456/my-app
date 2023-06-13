@@ -1,17 +1,23 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import SectionClassService from "services/SectionClassService";
+import UserService from "services/UserService";
 import SectionClass from "types/SectionClass";
+import User from "types/User";
 import * as Yup from "yup";
 
 export default function UpdateSectionCLass() {
+  const [listUsers, setListUsers] = useState<User[]>([]);
+
   const navigate = useNavigate();
   const { id } = useParams();
   const validationSchema = Yup.object({
     name: Yup.string().required("Please Enter your name"),
+    semester: Yup.string().required("Please Enter your name"),
+    userId: Yup.string().required("Please Enter your name"),
   }).required();
   const {
     register,
@@ -25,7 +31,7 @@ export default function UpdateSectionCLass() {
 
   const getSectionClass = (id: number) => {
     SectionClassService.getById(+id).then((sectionClass) => {
-      const fields = ["name", "id"];
+      const fields = ["name", "semester", "userId", "id"];
       fields.forEach((field) => setValue(field, sectionClass[field]));
     });
   };
@@ -48,6 +54,18 @@ export default function UpdateSectionCLass() {
     }
   };
 
+  useEffect(() => {
+    getListUsers();
+  }, []);
+
+  const getListUsers = async () => {
+    await UserService.getListTeacher()
+      .then((res) => {
+        setListUsers(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const handleBack = () => {
     navigate("/lophocphan");
   };
@@ -60,7 +78,7 @@ export default function UpdateSectionCLass() {
           onSubmit={handleSubmit(UpdateSectionClass)}
           onReset={reset}
         >
-          <div className="col-md-12">
+          <div className="col-md-6">
             <label htmlFor="title" className="form-label d-block text-start">
               Lớp học phần
             </label>
@@ -72,7 +90,31 @@ export default function UpdateSectionCLass() {
               {...register("name")}
             />
           </div>
-
+          <div className="col-md-6">
+            <label htmlFor="title" className="form-label d-block text-start">
+              Học kỳ
+            </label>
+            <input
+              type="text"
+              className={classNames("form-control", {
+                "is-invalid": Boolean(errors?.semester?.message),
+              })}
+              {...register("semester")}
+            />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="content" className="form-label d-block text-start">
+              Giáo Viên
+            </label>
+            <select {...register("userId")} className="form-select">
+              <option value={0}>--</option>
+              {listUsers.map((la) => (
+                <option key={la.id} value={la.id}>
+                  {la.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="col-12 text-end">
             <button type="submit" className="btn btn-primary me-2">
               Lưu

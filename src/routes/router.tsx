@@ -27,9 +27,7 @@ import SectionClassList from "features/section class/pages/SectionClassList";
 import CreateSectionCLass from "features/section class/pages/CreateSectionClass";
 import UpdateSectionCLass from "features/section class/pages/UpdateSectionClass";
 import SectionClassStudentList from "features/section class/pages/SectionClassStudentList";
-import CreateStudentSectionClass from "features/section class/pages/StudentSectionClassList";
 import HomePage from "features/home/HomePage";
-import UserDetail from "features/user/pages/UserDetailTeacher";
 import UserDetailTeacher from "features/user/pages/UserDetailTeacher";
 import UserDetailStudent from "features/user/pages/UserDetailStudent";
 

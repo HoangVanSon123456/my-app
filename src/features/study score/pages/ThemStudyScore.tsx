@@ -14,12 +14,9 @@ export default function ThemStudyScore() {
   const navigate = useNavigate();
   const validationSchema = Yup.object({
     userId: Yup.string().required("Please Enter your name"),
-    evaluate: Yup.string().required("Please Enter your username"),
     studyTimes: Yup.string().required("Please Enter your username"),
     processPoint: Yup.string().required("Please Enter your username"),
     testScore: Yup.string().required("Please Enter your username"),
-    endPoint: Yup.string().required("Please Enter your username"),
-    letterPoint: Yup.string().required("Please Enter your username"),
   }).required();
   const {
     register,
@@ -93,17 +90,6 @@ export default function ThemStudyScore() {
           </div>
           <div className="col-md-4">
             <label htmlFor="content" className="form-label d-block text-start">
-              Đánh giá
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.evaluate?.message),
-              })}
-              {...register("evaluate")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="content" className="form-label d-block text-start">
               Điểm quá trình
             </label>
             <input
@@ -122,28 +108,6 @@ export default function ThemStudyScore() {
                 "is-invalid": Boolean(errors?.testScore?.message),
               })}
               {...register("testScore")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Tổng kết học phần
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.endPoint?.message),
-              })}
-              {...register("endPoint")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Điểm chữ
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.letterPoint?.message),
-              })}
-              {...register("letterPoint")}
             />
           </div>
           <div className="col-12 text-end">

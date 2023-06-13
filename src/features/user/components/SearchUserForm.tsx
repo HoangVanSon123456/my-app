@@ -36,7 +36,7 @@ export default function SearchGiaoVien({ handleSearch, handleReset }: IProps) {
           <div className="row">
             <div className="col-sm-6 col-6">
               <div className="mb-1">
-                <label className="form-label">Mã Sinh Viên</label>
+                <label className="form-label">Mã</label>
                 <input
                   {...register("id")}
                   type="text"
