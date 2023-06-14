@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import UserService from "services/UserService";
-import User from "types/User";
 import ListSectionClassStudent from "../components/ListSectionClassStudent";
 import ModalConfirm from "components/layout/ModalConfirm";
 import SearchGiaoVien from "features/user/components/SearchUserForm";
@@ -13,22 +12,23 @@ export default function SectionClassStudentList() {
   const navigate = useNavigate();
   const { sectionScoreId } = useParams();
   const [show, setShow] = useState(false);
+  const [itemId, setItemId] = useState(0);
 
   const handleDelete = async (id: number) => {
-    // if (id > 0) {
-    //   setShow(true);
-    //   setItemId(id);
-    // }
+    if (id > 0) {
+      setShow(true);
+      setItemId(id);
+    }
   };
 
   useEffect(() => {
     if (sectionScoreId) {
-      getStudentSectionClass(+sectionScoreId);
+      getStudentSectionClass();
     }
   }, [sectionScoreId]);
 
-  const getStudentSectionClass = async (sectionScoreId: number) => {
-    await StudyScoreService.getStudyScoreBySectionClass(sectionScoreId)
+  const getStudentSectionClass = async () => {
+    await StudyScoreService.getStudyScoreBySectionClass(+sectionScoreId!)
       .then((res) => {
         setStudyScoreList(res);
         localStorage.setItem("sectionScoreId", String(sectionScoreId));
@@ -37,12 +37,13 @@ export default function SectionClassStudentList() {
   };
 
   const deleteItem = async () => {
-    // if (itemId > 0) {
-    //   await UserService.deleteItem(itemId)
-    //     .then(() => getListUsers())
-    //     .catch((err) => console.log(err));
-    //   setShow(false);
-    // setItemId(0);
+    if (itemId > 0) {
+      await StudyScoreService.deleteItem(itemId)
+        .then(() => getStudentSectionClass())
+        .catch((err) => console.log(err));
+      setShow(false);
+      setItemId(0);
+    }
   };
 
   const handleClickOpen = () => {
@@ -59,7 +60,7 @@ export default function SectionClassStudentList() {
 
   const handleReset = () => {
     if (sectionScoreId) {
-      getStudentSectionClass(+sectionScoreId);
+      getStudentSectionClass();
     }
   };
 

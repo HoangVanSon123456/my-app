@@ -23,7 +23,6 @@ export default function SinhVien() {
   const getListUsers = async () => {
     await UserService.getListStrudent()
       .then((res) => {
-        console.log(res);
         setListUsers(res);
       })
       .catch((err) => console.log(err));

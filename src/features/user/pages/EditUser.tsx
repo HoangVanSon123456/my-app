@@ -44,11 +44,8 @@ export default function SuaGiaoVien() {
     if (id) {
       await UserService.update(+id, data)
         .then((response) => {
-          if (response.data.userPosition == "TEACHER") {
-            navigate("/GiaoVien");
-          } else {
-            navigate("/SinhVien");
-          }
+          console.log(response);
+          navigate(-1);
         })
         .catch((error) => {
           console.log(error);

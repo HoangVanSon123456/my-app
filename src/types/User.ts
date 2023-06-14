@@ -12,4 +12,5 @@ export default interface User {
   accessToken?: string;
   refreshToken?: string;
   userPosition?: string;
+  newPassword?: string;
 }

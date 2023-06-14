@@ -12,12 +12,7 @@ export default function SuaEducationProduct() {
   const navigate = useNavigate();
   const { id } = useParams();
   const validationSchema = Yup.object({
-    courseCode: Yup.string().required("Please Enter your name"),
-    courseName: Yup.string().required("Please Enter your username"),
-    creditName: Yup.string().required("Please Enter your username"),
-    theoryClass: Yup.string().required("Please Enter your username"),
-    practicalClass: Yup.string().required("Please Enter your username"),
-    semester: Yup.string().required("Please Enter your username"),
+    name: Yup.string().required("Please Enter your username"),
   }).required();
   const {
     register,
@@ -31,15 +26,7 @@ export default function SuaEducationProduct() {
 
   const getEducationProduct = (id: number) => {
     EducationProgramService.getById(+id).then((EducationProduct) => {
-      const fields = [
-        "courseCode",
-        "courseName",
-        "creditName",
-        "theoryClass",
-        "practicalClass",
-        "semester",
-        "id",
-      ];
+      const fields = ["name", "id"];
       fields.forEach((field) => setValue(field, EducationProduct[field]));
     });
   };
@@ -74,70 +61,14 @@ export default function SuaEducationProduct() {
           onSubmit={handleSubmit(UpdateEducationProduct)}
           onReset={reset}
         >
-          <div className="col-md-3">
-            <label htmlFor="title" className="form-label d-block text-start">
-              Mã học phần
-            </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.courseCode?.message),
-              })}
-              {...register("courseCode")}
-            />
-          </div>
-          <div className="col-md-3">
+          <div className="col-md-12">
             <label className="form-label">Tên học phần</label>
             <input
-              {...register("courseName")}
+              {...register("name")}
               type="text"
               className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.courseName?.message),
+                "is-invalid": Boolean(errors?.name?.message),
               })}
-            />
-          </div>
-          <div className="col-md-3">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Số Tín Chỉ
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.creditName?.message),
-              })}
-              {...register("creditName")}
-            />
-          </div>
-          <div className="col-md-3">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Số Tiết Lý Thuyết
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.theoryClass?.message),
-              })}
-              {...register("theoryClass")}
-            />
-          </div>
-          <div className="col-md-3">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Số Tiết Thực Hành
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.practicalClass?.message),
-              })}
-              {...register("practicalClass")}
-            />
-          </div>
-          <div className="col-md-3">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Học Kỳ
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.semester?.message),
-              })}
-              {...register("semester")}
             />
           </div>
           <div className="col-12 text-end">

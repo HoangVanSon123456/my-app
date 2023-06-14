@@ -14,11 +14,8 @@ export default function SuaStudyScore() {
   const { id } = useParams();
   const validationSchema = Yup.object({
     studyTimes: Yup.string().required("Please Enter your username"),
-    evaluate: Yup.string().required("Please Enter your name"),
     processPoint: Yup.string().required("Please Enter your username"),
     testScore: Yup.string().required("Please Enter your name"),
-    endPoint: Yup.string().required("Please Enter your username"),
-    letterPoint: Yup.string().required("Please Enter your username"),
   }).required();
   const {
     register,
@@ -32,15 +29,7 @@ export default function SuaStudyScore() {
 
   const getStudyScore = (id: number) => {
     StudyScoreService.getById(+id).then((studyscore) => {
-      const fields = [
-        "studyTimes",
-        "evaluate",
-        "processPoint",
-        "testScore",
-        "endPoint",
-        "letterPoint",
-        "id",
-      ];
+      const fields = ["studyTimes", "processPoint", "testScore", "id"];
       fields.forEach((field) => setValue(field, studyscore[field]));
     });
   };
@@ -55,7 +44,7 @@ export default function SuaStudyScore() {
     if (id) {
       await StudyScoreService.update(+id, data)
         .then((response) => {
-          navigate("/diemhocphan");
+          navigate(-1);
         })
         .catch((error) => {
           console.log(error);
@@ -88,17 +77,6 @@ export default function SuaStudyScore() {
           </div>
           <div className="col-md-4">
             <label htmlFor="content" className="form-label d-block text-start">
-              Đánh giá
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.evaluate?.message),
-              })}
-              {...register("evaluate")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="content" className="form-label d-block text-start">
               Điểm quá trình
             </label>
             <input
@@ -119,29 +97,6 @@ export default function SuaStudyScore() {
               {...register("testScore")}
             />
           </div>
-          <div className="col-md-4">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Tổng kết học phần
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.endPoint?.message),
-              })}
-              {...register("endPoint")}
-            />
-          </div>
-          <div className="col-md-4">
-            <label htmlFor="content" className="form-label d-block text-start">
-              Điểm chữ
-            </label>
-            <input
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.letterPoint?.message),
-              })}
-              {...register("letterPoint")}
-            />
-          </div>
-
           <div className="col-12 text-end">
             <button type="submit" className="btn btn-primary me-2">
               Lưu

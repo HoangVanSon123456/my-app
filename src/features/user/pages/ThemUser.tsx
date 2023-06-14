@@ -108,7 +108,6 @@ export default function ThemGiaoVien() {
                 error: Boolean(errors.password?.message),
               })}
               type={showPass ? "text" : "password"}
-              tabIndex={2}
             />
             <span
               className="input-group-text cursor-pointer"

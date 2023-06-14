@@ -16,8 +16,8 @@ export default function ListSectionClassStudent({
   handleDelete,
 }: IProps) {
   const navigate = useNavigate();
-  const handleDetailStudent = (id: number) => {
-    navigate(`/user/detailStudent/${id}`);
+  const handleEditItem = (id: number) => {
+    navigate(`/lophocphan/updateStudent/${id}`);
   };
   return (
     <>
@@ -58,17 +58,10 @@ export default function ListSectionClassStudent({
                   <button
                     type="button"
                     className="btn btn-outline-info btn-sm mx-1"
-                    // onClick={() => handleEditItem(item.id!)}
+                    onClick={() => handleEditItem(item.id!)}
                   >
                     <Edit size={16} />
                   </button>
-                  {/* <button
-                    type="button"
-                    className="btn btn-outline-warning btn-sm"
-                    onClick={() => handleDetailStudent(item.id!)}
-                  >
-                    <Eye size={16} />
-                  </button> */}
                 </div>
               </td>
             </tr>
