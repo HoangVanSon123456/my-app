@@ -29,7 +29,7 @@ export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
   };
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
-    navigate(`/user/update/${id}`);
+    navigate(`/userTeacher/update/${id}`);
   };
 
   const handleDetailTeacher = (id: number) => {

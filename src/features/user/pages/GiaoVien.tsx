@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import UserService from "../../../services/UserService";
 import User from "../../../types/User";
-import SearchGiaoVien from "../components/SearchUserForm";
+import SearchGiaoVien from "../components/SearchStudentForm";
 import { useNavigate } from "react-router-dom";
 import ModalConfirm from "components/layout/ModalConfirm";
 import ListUserTeacher from "../components/ListUserTeacher";
+import SearchTeacherForm from "../components/SearchTeacherForm ";
 
 export default function GiaoVien() {
   const [listUsers, setListUsers] = useState<User[]>([]);
@@ -13,7 +14,7 @@ export default function GiaoVien() {
   const [itemId, setItemId] = useState(0);
 
   const handleClickOpen = () => {
-    navigate("/user/create");
+    navigate("/userTeacher/create");
   };
 
   useEffect(() => {
@@ -93,7 +94,7 @@ export default function GiaoVien() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            <SearchGiaoVien
+            <SearchTeacherForm
               handleSearch={handleSearch}
               handleReset={handleReset}
             />

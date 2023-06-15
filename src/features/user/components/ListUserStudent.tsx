@@ -30,7 +30,7 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
   };
   const handleEditItem = (id: number) => {
     setAnchorEl(null);
-    navigate(`/user/update/${id}`);
+    navigate(`/userStudent/update/${id}`);
   };
 
   const handleDetailStudent = (id: number) => {

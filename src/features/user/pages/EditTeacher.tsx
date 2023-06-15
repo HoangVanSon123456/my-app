@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import UserService from "services/UserService";
 import classNames from "classnames";
 import User from "types/User";
-export default function SuaGiaoVien() {
+export default function EditTeacher() {
   const {
     register,
     handleSubmit,
@@ -42,8 +42,8 @@ export default function SuaGiaoVien() {
 
   const UpdateUser = async (data: User) => {
     if (id) {
-      await UserService.update(+id, data)
-        .then((response) => {
+      await UserService.updateTeacher(+id, data)
+        .then(() => {
           navigate(-1);
         })
         .catch((error) => {
@@ -135,6 +135,42 @@ export default function SuaGiaoVien() {
                 "is-invalid": Boolean(errors?.age?.message),
               })}
               {...register("age")}
+            />
+          </div>
+          <div className="col-md-3">
+            <label htmlFor="age" className="form-label d-block text-start">
+              Chức vụ
+            </label>
+            <input
+              type="text"
+              className={classNames("form-control", {
+                "is-invalid": Boolean(errors?.position?.message),
+              })}
+              {...register("position")}
+            />
+          </div>
+          <div className="col-md-3">
+            <label htmlFor="age" className="form-label d-block text-start">
+              Bộ môn
+            </label>
+            <input
+              type="text"
+              className={classNames("form-control", {
+                "is-invalid": Boolean(errors?.subject?.message),
+              })}
+              {...register("subject")}
+            />
+          </div>
+          <div className="col-md-3">
+            <label htmlFor="age" className="form-label d-block text-start">
+              Mô tả
+            </label>
+            <input
+              type="text"
+              className={classNames("form-control", {
+                "is-invalid": Boolean(errors?.depict?.message),
+              })}
+              {...register("depict")}
             />
           </div>
           <div className="col-md-3">

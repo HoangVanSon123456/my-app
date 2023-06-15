@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "services/UserService";
 import User from "types/User";
-import SearchGiaoVien from "../components/SearchUserForm";
 import ModalConfirm from "components/layout/ModalConfirm";
 import ListUserStudent from "../components/ListUserStudent";
+import SearchStudentForm from "../components/SearchStudentForm";
 
 export default function SinhVien() {
   const [listUsers, setListUsers] = useState<User[]>([]);
@@ -13,7 +13,7 @@ export default function SinhVien() {
   const [itemId, setItemId] = useState(0);
 
   const handleClickOpen = () => {
-    navigate("/user/create");
+    navigate("/userStudent/create");
   };
 
   useEffect(() => {
@@ -93,7 +93,7 @@ export default function SinhVien() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            <SearchGiaoVien
+            <SearchStudentForm
               handleSearch={handleSearch}
               handleReset={handleReset}
             />

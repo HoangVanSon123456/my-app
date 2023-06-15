@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import UserService from "services/UserService";
 import ListSectionClassStudent from "../components/ListSectionClassStudent";
 import ModalConfirm from "components/layout/ModalConfirm";
-import SearchGiaoVien from "features/user/components/SearchUserForm";
+import SearchGiaoVien from "features/user/components/SearchStudentForm";
 import StudyScoreService from "services/StudyScoreService";
 import StudyScore from "types/StudyScore";
 

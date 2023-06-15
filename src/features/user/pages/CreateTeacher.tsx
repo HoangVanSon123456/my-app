@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Eye, EyeOff } from "react-feather";
 
-export default function ThemGiaoVien() {
+export default function CreateTeacher() {
   const [showPass, setShowPass] = useState(false);
   const [loadingUpdate, setLoadingUpdate] = useState(false);
   const navigate = useNavigate();
@@ -34,15 +34,11 @@ export default function ThemGiaoVien() {
     resolver: yupResolver(validationSchema),
   });
 
-  const saveOrUpdateUser = (data: User) => {
+  const saveUserTeacher = (data: User) => {
     setLoadingUpdate(true);
-    UserService.create(data)
-      .then((response) => {
-        if (response.userPosition == "TEACHER") {
-          navigate("/GiaoVien");
-        } else {
-          navigate("/SinhVien");
-        }
+    UserService.createTeacher(data)
+      .then(() => {
+        navigate("/GiaoVien");
       })
       .catch((error) => {
         console.log(error);
@@ -58,7 +54,7 @@ export default function ThemGiaoVien() {
       <div className="card-header h2">Thêm</div>
       <form
         className="row p-2 g-2"
-        onSubmit={handleSubmit(saveOrUpdateUser)}
+        onSubmit={handleSubmit(saveUserTeacher)}
         onReset={reset}
       >
         <div className="col-md-3">
@@ -155,6 +151,42 @@ export default function ThemGiaoVien() {
           />
         </div>
         <div className="col-md-3">
+          <label htmlFor="age" className="form-label d-block text-start">
+            Chức vụ
+          </label>
+          <input
+            type="text"
+            className={classNames("form-control", {
+              "is-invalid": Boolean(errors?.position?.message),
+            })}
+            {...register("position")}
+          />
+        </div>
+        <div className="col-md-3">
+          <label htmlFor="age" className="form-label d-block text-start">
+            Bộ môn
+          </label>
+          <input
+            type="text"
+            className={classNames("form-control", {
+              "is-invalid": Boolean(errors?.subject?.message),
+            })}
+            {...register("subject")}
+          />
+        </div>
+        <div className="col-md-3">
+          <label htmlFor="age" className="form-label d-block text-start">
+            Mô tả
+          </label>
+          <input
+            type="text"
+            className={classNames("form-control", {
+              "is-invalid": Boolean(errors?.depict?.message),
+            })}
+            {...register("depict")}
+          />
+        </div>
+        <div className="col-md-3">
           <label htmlFor="roles" className="form-label d-block text-start">
             Giới tính
           </label>
@@ -165,19 +197,6 @@ export default function ThemGiaoVien() {
           >
             <option value="nam">Nam</option>
             <option value="nu">Nữ</option>
-          </select>
-        </div>
-        <div className="col-md-3">
-          <label htmlFor="roles" className="form-label d-block text-start">
-            Chức vụ
-          </label>
-          <select
-            {...register("userPosition")}
-            className="form-select"
-            aria-label="Default select example"
-          >
-            <option value="TEACHER">Giáo Viên</option>
-            <option value="STUDENT">Sinh viên</option>
           </select>
         </div>
         <div className="col-12 text-end">

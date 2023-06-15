@@ -17,8 +17,13 @@ const getListAll = async () => {
   return data;
 };
 
-const create = async (data: User) => {
-  await http.post("/admin/user/create", data);
+const createTeacher = async (data: User) => {
+  await http.post("/admin/userTeacher/create", data);
+  return data;
+};
+
+const createStudent = async (data: User) => {
+  await http.post("/admin/userStudent/create", data);
   return data;
 };
 
@@ -27,8 +32,12 @@ const deleteItem = async (id: number) => {
   return data;
 };
 
-const update = (id: number, data: User) => {
-  return http.put(`/admin/user/update/${id}`, data);
+const updateTeacher = (id: number, data: User) => {
+  return http.put(`/admin/userTeacher/update/${id}`, data);
+};
+
+const updateStudent = (id: number, data: User) => {
+  return http.put(`/admin/userStudent/update/${id}`, data);
 };
 
 const getById = async (id: number) => {
@@ -66,9 +75,11 @@ const UserService = {
   searchUser,
   getListTeacher,
   getListStrudent,
-  create,
+  createTeacher,
+  createStudent,
   deleteItem,
-  update,
+  updateTeacher,
+  updateStudent,
   getById,
 };
 export default UserService;

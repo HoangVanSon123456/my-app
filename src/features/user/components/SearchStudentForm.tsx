@@ -6,12 +6,15 @@ interface IProps {
   handleReset: Function;
 }
 
-SearchGiaoVien.defaultProps = {
+SearchStudentForm.defaultProps = {
   handleSearch: null,
   handleReset: null,
 };
 
-export default function SearchGiaoVien({ handleSearch, handleReset }: IProps) {
+export default function SearchStudentForm({
+  handleSearch,
+  handleReset,
+}: IProps) {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data: SearchUser) => {
