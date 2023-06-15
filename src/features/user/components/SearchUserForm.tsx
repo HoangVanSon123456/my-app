@@ -15,13 +15,13 @@ export default function SearchGiaoVien({ handleSearch, handleReset }: IProps) {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data: SearchUser) => {
-    handleSearch(data.id || data.name?.trim());
+    handleSearch(data.code || data.name?.trim());
   };
 
   const resetForm = () => {
     handleReset();
     reset({
-      id: "",
+      code: "",
       name: "",
     });
   };
@@ -38,7 +38,7 @@ export default function SearchGiaoVien({ handleSearch, handleReset }: IProps) {
               <div className="mb-1">
                 <label className="form-label">Mã</label>
                 <input
-                  {...register("id")}
+                  {...register("code")}
                   type="text"
                   className="form-control"
                 />

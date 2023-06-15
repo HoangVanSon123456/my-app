@@ -44,7 +44,6 @@ export default function SuaGiaoVien() {
     if (id) {
       await UserService.update(+id, data)
         .then((response) => {
-          console.log(response);
           navigate(-1);
         })
         .catch((error) => {

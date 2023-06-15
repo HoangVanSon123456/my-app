@@ -47,7 +47,6 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
           <th className="text-center">Họ và tên</th>
           <th className="text-center">Địa chỉ</th>
           <th className="text-center">Email</th>
-          <th className="text-center">Tuổi</th>
           <th className="text-center">Số điện thoại</th>
           <th className="text-left">Thao tác</th>
         </tr>
@@ -56,12 +55,11 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
         {listUsers.map((item: User, index: number) => (
           <tr key={item.id}>
             <th className="text-center">{index + 1}</th>
-            <td className="text-center">{item?.id}</td>
+            <td className="text-center">{item?.code}</td>
             <td className="text-center">{item?.name}</td>
             <td className="text-center">{item?.useName}</td>
             <td className="text-center">{item?.address}</td>
             <td className="text-center">{item?.email}</td>
-            <td className="text-center">{item?.age}</td>
             <td className="text-center">{item?.phone}</td>
             <td className="text-center">
               <IconButton

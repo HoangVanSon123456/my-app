@@ -23,7 +23,7 @@ export default function GiaoVien() {
   const getListUsers = async () => {
     await UserService.getListTeacher()
       .then((res) => {
-        setListUsers(res);
+        setListUsers(res.data);
       })
       .catch((err) => console.log(err));
   };

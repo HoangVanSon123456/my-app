@@ -63,7 +63,7 @@ export default function SinhVien() {
           <div className="row breadcrumbs-top">
             <div className="col-12">
               <h2 className="content-header-title float-start mb-0">
-                Giáo Viên
+                Sinh Viên
               </h2>
               <div className="breadcrumb-wrapper">
                 <ol className="breadcrumb">
@@ -71,7 +71,7 @@ export default function SinhVien() {
                     <a href="/">Trang chủ</a>
                   </li>
                   <li className="breadcrumb-item">
-                    <a href="/GiaoVien">Giáo Viên</a>
+                    <a href="/SinhVien">Sinh Viên</a>
                   </li>
                 </ol>
               </div>
@@ -85,7 +85,7 @@ export default function SinhVien() {
               className="btn btn-primary btn-10px"
               onClick={handleClickOpen}
             >
-              Thêm Giáo Viên
+              Thêm Sinh Viên
             </button>
           </div>
         </div>

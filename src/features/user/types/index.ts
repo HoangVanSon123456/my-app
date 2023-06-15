@@ -1,4 +1,4 @@
 export default interface SearchUser {
-  id?: number;
+  code?: number;
   name?: string;
 }

@@ -23,6 +23,9 @@ export default function UserDetailTeacher() {
         "address",
         "age",
         "phone",
+        "position",
+        "subject",
+        "depict",
         "id",
       ];
       fields.forEach((field) => setValue(field, user[field]));
@@ -36,23 +39,14 @@ export default function UserDetailTeacher() {
     <>
       <div className="container rounded bg-white ">
         <div className="row">
-          <div className="col-md-3 border-right">
-            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-              <img
-                className="rounded-circle mt-5"
-                width="150px"
-                src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-              />
-            </div>
-          </div>
-          <div className="col-md-9 border-right">
+          <div className="col-md-12 border-right">
             <div className="p-3 py-5">
               <div className="d-flex justify-content-between align-items-center">
                 <h4 className="text-right">Thông tin chi tiết</h4>
               </div>
               <div className="row mt-2">
                 <div className="col-md-6">
-                  <label className="labels">Tên</label>
+                  <label className="form-label">Tên</label>
                   <input
                     type="text"
                     className="form-control"
@@ -61,7 +55,7 @@ export default function UserDetailTeacher() {
                   />
                 </div>
                 <div className="col-md-6">
-                  <label className="labels">Học và tên</label>
+                  <label className="form-label">Học và tên</label>
                   <input
                     type="text"
                     className="form-control"
@@ -71,8 +65,8 @@ export default function UserDetailTeacher() {
                 </div>
               </div>
               <div className="row mt-2">
-                <div className="col-md-12">
-                  <label className="labels">Số điện thoại</label>
+                <div className="col-md-6">
+                  <label className="form-label">Số điện thoại</label>
                   <input
                     type="text"
                     className="form-control"
@@ -80,8 +74,8 @@ export default function UserDetailTeacher() {
                     readOnly
                   />
                 </div>
-                <div className="col-md-12 mt-2">
-                  <label className="labels">Địa chỉ</label>
+                <div className="col-md-6">
+                  <label className="form-label">Địa chỉ</label>
                   <input
                     type="text"
                     className="form-control"
@@ -89,12 +83,39 @@ export default function UserDetailTeacher() {
                     readOnly
                   />
                 </div>
-                <div className="col-md-12 mt-2">
-                  <label className="labels">Email</label>
+                <div className="col-md-6 mt-2">
+                  <label className="form-label">Email</label>
                   <input
                     type="text"
                     className="form-control"
                     {...register("email")}
+                    readOnly
+                  />
+                </div>
+                <div className="col-md-6 mt-2">
+                  <label className="form-label">Chức vụ</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    {...register("position")}
+                    readOnly
+                  />
+                </div>
+                <div className="col-md-6 mt-2">
+                  <label className="form-label">Bộ môn</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    {...register("subject")}
+                    readOnly
+                  />
+                </div>
+                <div className="col-md-6 mt-2">
+                  <label className="form-label">Bộ môn</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    {...register("depict")}
                     readOnly
                   />
                 </div>

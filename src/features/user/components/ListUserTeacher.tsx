@@ -42,11 +42,10 @@ export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
           <th className="text-center">STT</th>
           <th className="text-center">Tên</th>
           <th className="text-center">Họ và tên</th>
-          <th className="text-center">Địa chỉ</th>
+          <th className="text-center">Chức vụ</th>
           <th className="text-center">Email</th>
-          <th className="text-center">Tuổi</th>
+          <th className="text-center">Bộ môn</th>
           <th className="text-center">Số điện thoại</th>
-          <th className="text-center">Giới tính</th>
           <th className="text-left">Thao tác</th>
         </tr>
       </thead>
@@ -56,36 +55,10 @@ export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
             <th className="text-center">{index + 1}</th>
             <td className="text-center">{item?.name}</td>
             <td className="text-center">{item?.useName}</td>
-            <td className="text-center">{item?.address}</td>
+            <td className="text-center">{item?.position}</td>
             <td className="text-center">{item?.email}</td>
-            <td className="text-center">{item?.age}</td>
+            <td className="text-center">{item?.subject}</td>
             <td className="text-center">{item?.phone}</td>
-            <td className="text-center">{item?.gender}</td>
-            {/* <td>
-              <div>
-                <button
-                  type="button"
-                  className="btn btn-outline-danger btn-sm"
-                  onClick={() => handleDelete(item.id!)}
-                >
-                  <Trash size={16} />
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-outline-info btn-sm mx-1"
-                  onClick={() => handleEditItem(item.id!)}
-                >
-                  <Edit size={16} />
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-outline-warning btn-sm"
-                  onClick={() => handleDetailTeacher(item.id!)}
-                >
-                  <Eye size={16} />
-                </button>
-              </div>
-            </td> */}
             <td className="text-center">
               <IconButton
                 className="btn btn-sm hide-arrow py-0"

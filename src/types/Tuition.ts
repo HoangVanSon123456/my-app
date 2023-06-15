@@ -4,4 +4,6 @@ export default interface Tuition {
   intoMoney?: number;
   semester?: String;
   status?: String;
+  userId?: number;
+  userName?: String;
 }

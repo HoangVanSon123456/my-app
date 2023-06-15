@@ -5,17 +5,18 @@ import * as Yup from "yup";
 import classNames from "classnames";
 import Tuition from "types/Tuition";
 import TuitionService from "services/TuitionService";
+import { useEffect, useState } from "react";
+import UserService from "services/UserService";
+import User from "types/User";
 
 export default function ThemTuition() {
+  const [listUsers, setListUsers] = useState<User[]>([]);
   const navigate = useNavigate();
   const validationSchema = Yup.object({
     tuitionType: Yup.string().required("Please Enter your name"),
     semester: Yup.string().required("Please Enter your username"),
-    creditName: Yup.string().required("Please Enter your name"),
-    price: Yup.string().required("Please Enter your username"),
-    discount: Yup.string().required("Please Enter your name"),
-    reLearn: Yup.string().required("Please Enter your username"),
-    intoMoney: Yup.string().required("Please Enter your name"),
+    status: Yup.string().required("Please Enter your username"),
+    userId: Yup.string().required("Please Enter your name"),
   }).required();
   const {
     register,
@@ -26,9 +27,22 @@ export default function ThemTuition() {
     resolver: yupResolver(validationSchema),
   });
 
+  useEffect(() => {
+    getListUsers();
+  }, []);
+
+  const getListUsers = async () => {
+    await UserService.getListStrudent()
+      .then((res) => {
+        setListUsers(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const saveOrUpdateUser = (data: Tuition) => {
     TuitionService.create(data)
       .then((response) => {
+        console.log(response);
         navigate("/hocphi");
       })
       .catch((error) => {
@@ -48,6 +62,19 @@ export default function ThemTuition() {
           onSubmit={handleSubmit(saveOrUpdateUser)}
           onReset={reset}
         >
+          <div className="col-md-4">
+            <label htmlFor="content" className="form-label d-block text-start">
+              Tên sinh viên
+            </label>
+            <select {...register("userId")} className="form-select">
+              <option value={0}>--</option>
+              {listUsers.map((la) => (
+                <option key={la.id} value={la.id}>
+                  {la.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="col-md-4">
             <label htmlFor="title" className="form-label d-block text-start">
               Loại học phí
@@ -81,8 +108,8 @@ export default function ThemTuition() {
               className="form-select"
               aria-label="Default select example"
             >
-              <option value="chuadong">Chứ đóng học phí</option>
-              <option value="dong">Đã đóng học phí</option>
+              <option value="Chưa đóng học phí">Chưa đóng học phí</option>
+              <option value="Đã đóng học phí">Đã đóng học phí</option>
             </select>
           </div>
           <div className="col-md-4">

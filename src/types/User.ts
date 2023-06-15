@@ -13,4 +13,8 @@ export default interface User {
   refreshToken?: string;
   userPosition?: string;
   newPassword?: string;
+  code?: number;
+  subject?: string;
+  depict?: string;
+  position?: string;
 }
