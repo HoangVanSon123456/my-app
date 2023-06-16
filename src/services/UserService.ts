@@ -68,7 +68,17 @@ const searchUser = async (keyword: string) => {
   return data;
 };
 
+const changePassword = async (data: User) => {
+  await http.put("/admin/change-password", data, {
+    headers: {
+      token: getLocalStorage(AUTH_KEYS.ACCESS_TOKEN),
+    },
+  });
+  return data;
+};
+
 const UserService = {
+  changePassword,
   getListAll,
   getUserToken,
   getUser,

@@ -35,10 +35,6 @@ export default function UserDetailStudent() {
     navigate(-1);
   };
 
-  const handleClickOpenStudyScore = () => {
-    navigate("/diemhocphan");
-  };
-
   const handleClickOpenTution = () => {
     navigate("/hocphi");
   };
@@ -115,13 +111,6 @@ export default function UserDetailStudent() {
                     onClick={handleClickOpenTution}
                   >
                     Học Phí
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-10px me-1"
-                    onClick={handleClickOpenStudyScore}
-                  >
-                    Bảng điểm
                   </button>
                   <button
                     type="submit"

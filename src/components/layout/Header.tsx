@@ -18,6 +18,10 @@ export default function Header() {
       navigate(`/user/getProfile/${res}`);
     });
   };
+
+  const handleForgotPassword = () => {
+    navigate("/doimatkhau");
+  };
   return (
     <>
       <div>
@@ -106,6 +110,9 @@ export default function Header() {
                 <Dropdown.Menu style={{ marginTop: "20px" }}>
                   <Dropdown.Item onClick={handleGetProfile}>
                     Trang cá nhân
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={handleForgotPassword}>
+                    Đổi mật khẩu
                   </Dropdown.Item>
                   <Dropdown.Item onClick={handleLogout}>
                     Đăng xuất

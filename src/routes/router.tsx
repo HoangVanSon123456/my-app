@@ -30,11 +30,11 @@ import SectionClassStudentList from "features/section class/pages/SectionClassSt
 import HomePage from "features/home/HomePage";
 import UserDetailTeacher from "features/user/pages/UserDetailTeacher";
 import UserDetailStudent from "features/user/pages/UserDetailStudent";
-import ForgotPass from "features/auth/pages/ForgotPass";
 import CreateStudent from "features/user/pages/CreateStudent";
 import EditTeacher from "features/user/pages/EditTeacher";
 import EditStudent from "features/user/pages/EditStudent";
 import CreateTeacher from "features/user/pages/CreateTeacher";
+import ChangePassword from "features/user/pages/ChangePassword";
 
 const LoginPage = React.lazy(() => import("features/auth/pages/LoginPage"));
 const AuthPage = React.lazy(() => import("features/auth/pages/AuthPage"));
@@ -47,8 +47,6 @@ export default function RouterView() {
           <Route path="/" element={<AuthPage />}>
             <Route index element={<LoginPage />} />
             <Route path="login" element={<LoginPage />} />
-            <Route path="forgot" element={<ForgotPass />} />
-            {/* <Route path="change-password" element={<ChangePassPage />} /> */}
           </Route>
           <Route
             path="/trangchu"
@@ -56,6 +54,16 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <HomePage />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/doimatkhau"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <ChangePassword />
                 </Suspense>
               </PrivateRoute>
             }
