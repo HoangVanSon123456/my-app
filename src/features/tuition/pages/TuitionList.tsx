@@ -5,6 +5,7 @@ import Tuition from "types/Tuition";
 import ListTuition from "../components/ListTuition";
 import TuitionService from "services/TuitionService";
 import ModalConfirm from "components/layout/ModalConfirm";
+import SearchTuitionForm from "../components/SearchTuitionForm";
 
 export default function TuitionList() {
   const [listTuition, setTuitionList] = useState<Tuition[]>([]);
@@ -43,6 +44,18 @@ export default function TuitionList() {
       setShow(false);
     }
   };
+
+  const handleSearch = async (keyword: string) => {
+    await TuitionService.searchTuition(keyword)
+      .then((res) => {
+        setTuitionList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleReset = () => {
+    getList();
+  };
   return (
     <>
       <div className="content-header row">
@@ -77,6 +90,10 @@ export default function TuitionList() {
       </div>
       <div className="content-body">
         <div className="row">
+          <SearchTuitionForm
+            handleSearch={handleSearch}
+            handleReset={handleReset}
+          />
           <div className="col-12">
             <div className="card">
               <ListTuition

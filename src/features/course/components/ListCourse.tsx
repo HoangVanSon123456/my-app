@@ -26,6 +26,7 @@ export default function ListCourse({ listCourse, handleDelete }: IProps) {
       <table className="datatables-basic table">
         <thead>
           <tr>
+            <th className="text-center">STT</th>
             <th className="text-center">Mã học phần</th>
             <th className="text-center">Tên học phần</th>
             <th className="text-center">Số tín chỉ</th>
@@ -37,6 +38,7 @@ export default function ListCourse({ listCourse, handleDelete }: IProps) {
         <tbody>
           {listCourse.map((course: Course, index: number) => (
             <tr key={course.id}>
+              <td className="text-center">{index + 1}</td>
               <td className="text-center">{course.code}</td>
               <td className="text-center">{course.name}</td>
               <td className="text-center">{course.creditName}</td>

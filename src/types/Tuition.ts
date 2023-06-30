@@ -6,4 +6,5 @@ export default interface Tuition {
   status?: String;
   userId?: number;
   userName?: String;
+  userCode?: number;
 }

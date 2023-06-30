@@ -8,4 +8,5 @@ export default interface StudyScore {
   letterPoint?: number;
   userId?: number;
   userName?: string;
+  userCode?: number;
 }
