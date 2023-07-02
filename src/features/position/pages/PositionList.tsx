@@ -1,14 +1,12 @@
-import { Button, Stack, Typography } from "@mui/material";
+import ModalConfirm from "components/layout/ModalConfirm";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Tuition from "types/Tuition";
-import ListTuition from "../components/ListTuition";
-import TuitionService from "services/TuitionService";
-import ModalConfirm from "components/layout/ModalConfirm";
-import SearchTuitionForm from "../components/SearchTuitionForm";
+import positionService from "services/PositionService";
+import Position from "types/Position";
+import ListPosition from "../components/ListPosition";
 
-export default function TuitionList() {
-  const [listTuition, setTuitionList] = useState<Tuition[]>([]);
+export default function PositionList() {
+  const [listPosition, setPositionList] = useState<Position[]>([]);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [itemId, setItemId] = useState(0);
@@ -18,13 +16,14 @@ export default function TuitionList() {
   }, []);
 
   const handleClickOpen = () => {
-    navigate("/hocphi/create");
+    navigate("/chucdanh/create");
   };
 
   const getList = async () => {
-    await TuitionService.getList()
+    await positionService
+      .getList()
       .then((res) => {
-        setTuitionList(res);
+        setPositionList(res);
       })
       .catch((err) => console.log(err));
   };
@@ -38,23 +37,12 @@ export default function TuitionList() {
 
   const deleteItem = async () => {
     if (itemId > 0) {
-      await TuitionService.deleteItem(itemId)
+      await positionService
+        .deleteItem(itemId)
         .then(() => getList())
         .catch((err) => console.log(err));
       setShow(false);
     }
-  };
-
-  const handleSearch = async (keyword: string) => {
-    await TuitionService.searchTuition(keyword)
-      .then((res) => {
-        setTuitionList(res);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleReset = () => {
-    getList();
   };
   return (
     <>
@@ -62,14 +50,16 @@ export default function TuitionList() {
         <div className="content-header-left col-md-9 col-12 mb-2">
           <div className="row breadcrumbs-top">
             <div className="col-12">
-              <h2 className="content-header-title float-start mb-0">Học phí</h2>
+              <h2 className="content-header-title float-start mb-0">
+                Chức danh
+              </h2>
               <div className="breadcrumb-wrapper">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
                     <a href="/">Trang chủ</a>
                   </li>
                   <li className="breadcrumb-item">
-                    <a href="/lophocphan">Học phí</a>
+                    <a href="/bomon">Chức danh</a>
                   </li>
                 </ol>
               </div>
@@ -83,7 +73,7 @@ export default function TuitionList() {
               className="btn btn-primary btn-10px"
               onClick={handleClickOpen}
             >
-              Thêm học phần
+              Thêm chức danh
             </button>
           </div>
         </div>
@@ -91,15 +81,9 @@ export default function TuitionList() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            <SearchTuitionForm
-              handleSearch={handleSearch}
-              handleReset={handleReset}
-            />
-          </div>
-          <div className="col-12">
             <div className="card">
-              <ListTuition
-                listTuition={listTuition}
+              <ListPosition
+                listPosition={listPosition}
                 handleDelete={handleDelete}
               />
             </div>

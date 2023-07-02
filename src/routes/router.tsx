@@ -35,6 +35,12 @@ import EditTeacher from "features/user/pages/EditTeacher";
 import EditStudent from "features/user/pages/EditStudent";
 import CreateTeacher from "features/user/pages/CreateTeacher";
 import ChangePassword from "features/user/pages/ChangePassword";
+import SubjectList from "features/subject/pages/SubjectList";
+import CreateSubject from "features/subject/pages/CreateSubject";
+import EditSubject from "features/subject/pages/EditSubject";
+import PositionList from "features/position/pages/PositionList";
+import CreatePosition from "features/position/pages/CreatePosition";
+import EditPosition from "features/position/pages/EditPosition";
 
 const LoginPage = React.lazy(() => import("features/auth/pages/LoginPage"));
 const AuthPage = React.lazy(() => import("features/auth/pages/AuthPage"));
@@ -384,6 +390,66 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <SuaStudyScore />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/bomon"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <SubjectList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/bomon/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <CreateSubject />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/bomon/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <EditSubject />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/chucdanh"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <PositionList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/chucdanh/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <CreatePosition />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/chucdanh/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <EditPosition />
                 </Suspense>
               </PrivateRoute>
             }

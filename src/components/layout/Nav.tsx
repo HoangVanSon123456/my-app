@@ -75,16 +75,26 @@ export default function Nav() {
               </span>
             </a>
           </li>
-          {/* <li className="nav-item">
-            <a className="" href="/diemhocphan">
+          <li className="nav-item">
+            <a className="" href="/bomon">
               <span
                 className="menu-title text-truncate"
                 data-i18n="notification"
               >
-                Điểm Học Phần
+                Bộ môn
               </span>
             </a>
-          </li> */}
+          </li>
+          <li className="nav-item">
+            <a className="" href="/chucdanh">
+              <span
+                className="menu-title text-truncate"
+                data-i18n="notification"
+              >
+                Chức Danh
+              </span>
+            </a>
+          </li>
         </ul>
       </div>
     </>

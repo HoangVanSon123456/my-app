@@ -14,7 +14,7 @@ export default function SearchEducationProgram() {
           <div className="row">
             <div className="col-sm-6 col-6">
               <div className="mb-1">
-                <label className="form-label">Mã Học Phần</label>
+                <label className="form-label">Mã Chương trình đào tạo</label>
                 <input
                   {...register("searchText")}
                   type="text"
@@ -24,7 +24,7 @@ export default function SearchEducationProgram() {
             </div>
             <div className="col-sm-6 col-6">
               <div className="mb-1">
-                <label className="form-label">Tên Học Phần</label>
+                <label className="form-label">Tên Chương trình đào tạo</label>
                 <input
                   {...register("searchText")}
                   type="text"

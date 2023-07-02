@@ -31,7 +31,7 @@ export default function SearchTuitionForm({
 
   return (
     <div className="card">
-      <div className="card-header mb-1">
+      <div className="card-header">
         <h4 className="card-title">Tìm kiếm</h4>
       </div>
       <div className="card-body">
