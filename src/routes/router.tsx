@@ -41,6 +41,9 @@ import EditSubject from "features/subject/pages/EditSubject";
 import PositionList from "features/position/pages/PositionList";
 import CreatePosition from "features/position/pages/CreatePosition";
 import EditPosition from "features/position/pages/EditPosition";
+import AcademicList from "features/academic/pages/AcademicList";
+import CreateAcademic from "features/academic/pages/CreateAcademic";
+import EditAcademic from "features/academic/pages/EditAcademic";
 
 const LoginPage = React.lazy(() => import("features/auth/pages/LoginPage"));
 const AuthPage = React.lazy(() => import("features/auth/pages/AuthPage"));
@@ -450,6 +453,36 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <EditPosition />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocvu"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <AcademicList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocvu/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <CreateAcademic />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/hocvu/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <EditAcademic />
                 </Suspense>
               </PrivateRoute>
             }

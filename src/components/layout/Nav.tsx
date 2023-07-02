@@ -95,6 +95,26 @@ export default function Nav() {
               </span>
             </a>
           </li>
+          <li className="nav-item">
+            <a className="" href="/lichthi">
+              <span
+                className="menu-title text-truncate"
+                data-i18n="notification"
+              >
+                Lịch thi
+              </span>
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="" href="/hocvu">
+              <span
+                className="menu-title text-truncate"
+                data-i18n="notification"
+              >
+                Học vụ
+              </span>
+            </a>
+          </li>
         </ul>
       </div>
     </>
