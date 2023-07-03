@@ -44,6 +44,10 @@ import EditPosition from "features/position/pages/EditPosition";
 import AcademicList from "features/academic/pages/AcademicList";
 import CreateAcademic from "features/academic/pages/CreateAcademic";
 import EditAcademic from "features/academic/pages/EditAcademic";
+import RestScheduleList from "features/restSchedule/pages/RestScheduleList";
+import CreateRestSchedule from "features/restSchedule/pages/CreateRestSchedule";
+import EditRestSchedule from "features/restSchedule/pages/EditRestSchedule";
+import GetRestSchedule from "features/restSchedule/pages/GetRestSchedule";
 
 const LoginPage = React.lazy(() => import("features/auth/pages/LoginPage"));
 const AuthPage = React.lazy(() => import("features/auth/pages/AuthPage"));
@@ -483,6 +487,46 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <EditAcademic />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lichthi"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <RestScheduleList />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lichthi/create"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <CreateRestSchedule />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lichthi/update/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <EditRestSchedule />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/lichthi/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <GetRestSchedule />
                 </Suspense>
               </PrivateRoute>
             }
