@@ -5,10 +5,17 @@ import * as Yup from "yup";
 import UserService from "services/UserService";
 import User from "types/User";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye, EyeOff } from "react-feather";
+import ListPosition from "features/position/components/ListPosition";
+import positionService from "services/PositionService";
+import Position from "types/Position";
+import SubjectService from "services/SubjectService";
+import Subject from "types/Subject";
 
 export default function CreateTeacher() {
+  const [listPosition, setPositionList] = useState<Position[]>([]);
+  const [listSubject, setSubjectList] = useState<Subject[]>([]);
   const [showPass, setShowPass] = useState(false);
   const [loadingUpdate, setLoadingUpdate] = useState(false);
   const navigate = useNavigate();
@@ -34,6 +41,31 @@ export default function CreateTeacher() {
     resolver: yupResolver(validationSchema),
   });
 
+  useEffect(() => {
+    getListPosition();
+  }, []);
+
+  const getListPosition = async () => {
+    await positionService
+      .getList()
+      .then((res) => {
+        setPositionList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getListSubject();
+  }, []);
+
+  const getListSubject = async () => {
+    await SubjectService.getList()
+      .then((res) => {
+        setSubjectList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const saveUserTeacher = (data: User) => {
     setLoadingUpdate(true);
     UserService.createTeacher(data)
@@ -51,7 +83,7 @@ export default function CreateTeacher() {
   };
   return (
     <div className="card">
-      <div className="card-header h2">Thêm</div>
+      <div className="card-header h2">Thêm giáo viên</div>
       <form
         className="row p-2 g-2"
         onSubmit={handleSubmit(saveUserTeacher)}
@@ -71,7 +103,7 @@ export default function CreateTeacher() {
         </div>
         <div className="col-md-3">
           <label htmlFor="useName" className="form-label d-block text-start">
-            Họ và Tên
+            Họ và Tên đệm
           </label>
           <input
             type="text"
@@ -93,7 +125,7 @@ export default function CreateTeacher() {
             })}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="usePass" className="form-label d-block text-start">
             Mật Khẩu
           </label>
@@ -114,7 +146,7 @@ export default function CreateTeacher() {
           </div>
         </div>
 
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="phone" className="form-label d-block text-start">
             Số Điện Thoại
           </label>
@@ -126,7 +158,7 @@ export default function CreateTeacher() {
             {...register("phone")}
           />
         </div>
-        <div className="col-md-6">
+        <div className="col-md-4">
           <label htmlFor="address" className="form-label d-block text-start">
             Địa chỉ
           </label>
@@ -138,7 +170,7 @@ export default function CreateTeacher() {
             {...register("address")}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="age" className="form-label d-block text-start">
             Tuổi
           </label>
@@ -150,31 +182,33 @@ export default function CreateTeacher() {
             {...register("age")}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="age" className="form-label d-block text-start">
             Chức vụ
           </label>
-          <input
-            type="text"
-            className={classNames("form-control", {
-              "is-invalid": Boolean(errors?.position?.message),
-            })}
-            {...register("position")}
-          />
+          <select {...register("positionId")} className="form-select">
+            <option value={0}>--</option>
+            {listPosition.map((la) => (
+              <option key={la.id} value={la.id}>
+                {la.name}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="age" className="form-label d-block text-start">
             Bộ môn
           </label>
-          <input
-            type="text"
-            className={classNames("form-control", {
-              "is-invalid": Boolean(errors?.subject?.message),
-            })}
-            {...register("subject")}
-          />
+          <select {...register("subjectId")} className="form-select">
+            <option value={0}>--</option>
+            {listSubject.map((la) => (
+              <option key={la.id} value={la.id}>
+                {la.name}
+              </option>
+            ))}
+          </select>
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="age" className="form-label d-block text-start">
             Mô tả
           </label>
@@ -186,7 +220,7 @@ export default function CreateTeacher() {
             {...register("depict")}
           />
         </div>
-        <div className="col-md-3">
+        <div className="col-md-4">
           <label htmlFor="roles" className="form-label d-block text-start">
             Giới tính
           </label>

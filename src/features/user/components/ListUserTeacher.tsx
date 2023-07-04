@@ -41,7 +41,7 @@ export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
         <tr>
           <th className="text-center">STT</th>
           <th className="text-center">Tên</th>
-          <th className="text-center">Họ và tên</th>
+          <th className="text-center">Họ và tên đệm</th>
           <th className="text-center">Chức vụ</th>
           <th className="text-center">Email</th>
           <th className="text-center">Bộ môn</th>
@@ -55,9 +55,9 @@ export default function ListUserTeacher({ listUsers, handleDelete }: IProps) {
             <th className="text-center">{index + 1}</th>
             <td className="text-center">{item?.name}</td>
             <td className="text-center">{item?.useName}</td>
-            <td className="text-center">{item?.position}</td>
+            <td className="text-center">{item?.positionName}</td>
             <td className="text-center">{item?.email}</td>
-            <td className="text-center">{item?.subject}</td>
+            <td className="text-center">{item?.subjectName}</td>
             <td className="text-center">{item?.phone}</td>
             <td className="text-center">
               <IconButton

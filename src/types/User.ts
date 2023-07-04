@@ -14,7 +14,9 @@ export default interface User {
   userPosition?: string;
   newPassword?: string;
   code?: number;
-  subject?: string;
+  subjectName?: string;
+  subjectId?: number;
   depict?: string;
-  position?: string;
+  positionName?: string;
+  positionId?: number;
 }

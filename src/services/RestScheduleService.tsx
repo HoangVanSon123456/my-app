@@ -25,7 +25,13 @@ const getById = async (id: number) => {
   return data;
 };
 
+const getRestScheduleUser = async (id: number) => {
+  const { data } = await http.get(`/admin/user_restSchedule/${id}`);
+  return data;
+};
+
 const restScheduleService = {
+  getRestScheduleUser,
   getList,
   create,
   deleteItem,

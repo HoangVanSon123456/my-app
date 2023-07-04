@@ -48,6 +48,8 @@ import RestScheduleList from "features/restSchedule/pages/RestScheduleList";
 import CreateRestSchedule from "features/restSchedule/pages/CreateRestSchedule";
 import EditRestSchedule from "features/restSchedule/pages/EditRestSchedule";
 import GetRestSchedule from "features/restSchedule/pages/GetRestSchedule";
+import TuitionUser from "features/tuition/pages/TuitionUser";
+import RestScheduleUser from "features/restSchedule/pages/RestScheduleUser";
 
 const LoginPage = React.lazy(() => import("features/auth/pages/LoginPage"));
 const AuthPage = React.lazy(() => import("features/auth/pages/AuthPage"));
@@ -277,6 +279,16 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <SuaTuition />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/user/tuition/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <TuitionUser />
                 </Suspense>
               </PrivateRoute>
             }
@@ -517,6 +529,16 @@ export default function RouterView() {
               <PrivateRoute>
                 <Suspense>
                   <EditRestSchedule />
+                </Suspense>
+              </PrivateRoute>
+            }
+          ></Route>
+          <Route
+            path="/user/restSchedule/:id"
+            element={
+              <PrivateRoute>
+                <Suspense>
+                  <RestScheduleUser />
                 </Suspense>
               </PrivateRoute>
             }

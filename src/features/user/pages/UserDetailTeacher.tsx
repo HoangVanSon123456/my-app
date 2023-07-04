@@ -23,8 +23,8 @@ export default function UserDetailTeacher() {
         "address",
         "age",
         "phone",
-        "position",
-        "subject",
+        "positionName",
+        "subjectName",
         "depict",
         "id",
       ];
@@ -97,7 +97,7 @@ export default function UserDetailTeacher() {
                   <input
                     type="text"
                     className="form-control"
-                    {...register("position")}
+                    {...register("positionName")}
                     readOnly
                   />
                 </div>
@@ -106,7 +106,7 @@ export default function UserDetailTeacher() {
                   <input
                     type="text"
                     className="form-control"
-                    {...register("subject")}
+                    {...register("subjectName")}
                     readOnly
                   />
                 </div>

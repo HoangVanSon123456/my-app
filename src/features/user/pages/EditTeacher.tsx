@@ -1,10 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import UserService from "services/UserService";
 import classNames from "classnames";
 import User from "types/User";
+import positionService from "services/PositionService";
+import SubjectService from "services/SubjectService";
+import Position from "types/Position";
+import Subject from "types/Subject";
 export default function EditTeacher() {
+  const [listPosition, setPositionList] = useState<Position[]>([]);
+  const [listSubject, setSubjectList] = useState<Subject[]>([]);
   const {
     register,
     handleSubmit,
@@ -27,7 +33,10 @@ export default function EditTeacher() {
         "age",
         "phone",
         "role",
+        "positionId",
         "userPosition",
+        "subjectId",
+        "depict",
         "id",
       ];
       fields.forEach((field) => setValue(field, user[field]));
@@ -50,6 +59,31 @@ export default function EditTeacher() {
           console.log(error);
         });
     }
+  };
+
+  useEffect(() => {
+    getListPosition();
+  }, []);
+
+  const getListPosition = async () => {
+    await positionService
+      .getList()
+      .then((res) => {
+        setPositionList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getListSubject();
+  }, []);
+
+  const getListSubject = async () => {
+    await SubjectService.getList()
+      .then((res) => {
+        setSubjectList(res);
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleBack = () => {
@@ -137,31 +171,33 @@ export default function EditTeacher() {
               {...register("age")}
             />
           </div>
-          <div className="col-md-3">
+          <div className="col-md-4">
             <label htmlFor="age" className="form-label d-block text-start">
               Chức vụ
             </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.position?.message),
-              })}
-              {...register("position")}
-            />
+            <select {...register("positionId")} className="form-select">
+              <option value={0}>--</option>
+              {listPosition.map((la) => (
+                <option key={la.id} value={la.id}>
+                  {la.name}
+                </option>
+              ))}
+            </select>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-4">
             <label htmlFor="age" className="form-label d-block text-start">
               Bộ môn
             </label>
-            <input
-              type="text"
-              className={classNames("form-control", {
-                "is-invalid": Boolean(errors?.subject?.message),
-              })}
-              {...register("subject")}
-            />
+            <select {...register("subjectId")} className="form-select">
+              <option value={0}>--</option>
+              {listSubject.map((la) => (
+                <option key={la.id} value={la.id}>
+                  {la.name}
+                </option>
+              ))}
+            </select>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-4">
             <label htmlFor="age" className="form-label d-block text-start">
               Mô tả
             </label>
@@ -188,7 +224,7 @@ export default function EditTeacher() {
           </div>
           <div className="col-md-3">
             <label htmlFor="roles" className="form-label d-block text-start">
-              Chức vụ
+              Vai trò
             </label>
             <select
               {...register("userPosition")}

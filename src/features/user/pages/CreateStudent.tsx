@@ -51,7 +51,7 @@ export default function CreateStudent() {
   };
   return (
     <div className="card">
-      <div className="card-header h2">Thêm</div>
+      <div className="card-header h2">Thêm sinh viên</div>
       <form
         className="row p-2 g-2"
         onSubmit={handleSubmit(saveUserTeacher)}

@@ -30,7 +30,13 @@ const searchTuition = async (keyword: string) => {
   return data;
 };
 
+const getTuitionUser = async (id: number) => {
+  const { data } = await http.get(`/admin/user_tuition/${id}`);
+  return data;
+};
+
 const TuitionService = {
+  getTuitionUser,
   searchTuition,
   getList,
   create,

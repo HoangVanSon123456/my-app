@@ -37,6 +37,12 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
     navigate(`/user/detailStudent/${id}`);
     console.log(id);
   };
+  const handleTutionUser = (id: number) => {
+    navigate(`/user/tuition/${id}`);
+  };
+  const handleRestScheduleUser = (id: number) => {
+    navigate(`/user/restSchedule/${id}`);
+  };
   return (
     <table className="table">
       <thead>
@@ -54,7 +60,7 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
       <tbody>
         {listUsers.map((item: User, index: number) => (
           <tr key={item.id}>
-            <th className="text-center">{index + 1}</th>
+            <th className="text-center">{item.id}</th>
             <td className="text-center">{item?.code}</td>
             <td className="text-center">{item?.name}</td>
             <td className="text-center">{item?.useName}</td>
@@ -130,6 +136,20 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
                 >
                   <Trash size={14} className="me-50" />
                   <span>Xoá</span>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleTutionUser(item.id!)}
+                  className="text-success"
+                >
+                  <Trash size={14} className="me-50" />
+                  <span>Học phí</span>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => handleRestScheduleUser(item.id!)}
+                  className="text-dark"
+                >
+                  <Trash size={14} className="me-50" />
+                  <span>Lịch thi</span>
                 </MenuItem>
               </Menu>
             </td>
