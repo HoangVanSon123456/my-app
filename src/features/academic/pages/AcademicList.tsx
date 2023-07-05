@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AcademicService from "services/AcademicService";
 import Academic from "types/Academic";
 import ListAcademic from "../components/ListAcademic";
+import SearchAcademicForm from "../components/SearchAcademicForm";
 
 export default function AcademicList() {
   const [listAcademic, setAcademicList] = useState<Academic[]>([]);
@@ -43,6 +44,19 @@ export default function AcademicList() {
       setShow(false);
     }
   };
+
+  const handleSearch = async (keyword: string) => {
+    await AcademicService.searchAcademic(keyword)
+      .then((res) => {
+        console.log(res);
+        setAcademicList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleReset = () => {
+    getAcademic();
+  };
   return (
     <>
       <div className="content-header row">
@@ -78,10 +92,10 @@ export default function AcademicList() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            {/* <SearchTeacherForm
+            <SearchAcademicForm
               handleSearch={handleSearch}
               handleReset={handleReset}
-            /> */}
+            />
             <div className="card">
               <ListAcademic
                 listAcademic={listAcademic}

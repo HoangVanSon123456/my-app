@@ -7,6 +7,11 @@ const getListTeacher = async () => {
   const { data } = await http.get("/admin/teacher");
   return data;
 };
+
+const getListTeacherClass = async () => {
+  const { data } = await http.get("/admin/teacher_class");
+  return data;
+};
 const getListStrudent = async () => {
   const { data } = await http.get("/admin/student");
   return data;
@@ -78,6 +83,7 @@ const changePassword = async (data: User) => {
 };
 
 const UserService = {
+  getListTeacherClass,
   changePassword,
   getListAll,
   getUserToken,

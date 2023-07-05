@@ -45,7 +45,7 @@ export default function CreateSectionCLass() {
   }, []);
 
   const getListUsers = async () => {
-    await UserService.getListTeacher()
+    await UserService.getListTeacherClass()
       .then((res) => {
         setListUsers(res);
       })

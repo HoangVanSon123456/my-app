@@ -30,7 +30,13 @@ const getRestScheduleUser = async (id: number) => {
   return data;
 };
 
+const searchSRestSchedule = async (keyword: string) => {
+  const { data } = await http.get(`/admin/restSchedule/search/${keyword}`);
+  return data;
+};
+
 const restScheduleService = {
+  searchSRestSchedule,
   getRestScheduleUser,
   getList,
   create,

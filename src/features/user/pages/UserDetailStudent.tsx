@@ -20,11 +20,13 @@ export default function UserDetailStudent() {
       localStorage.setItem("userId", String(id));
       const fields = [
         "name",
+        "code",
         "useName",
         "email",
         "address",
         "age",
         "phone",
+        "subjectName",
         "id",
       ];
       fields.forEach((field) => setValue(field, user[field]));
@@ -35,9 +37,6 @@ export default function UserDetailStudent() {
     navigate(-1);
   };
 
-  const handleClickOpenTution = () => {
-    navigate("/hocphi");
-  };
   return (
     <>
       <div className="container rounded bg-white ">
@@ -57,7 +56,16 @@ export default function UserDetailStudent() {
                 <h4 className="text-right">Thông tin chi tiết</h4>
               </div>
               <div className="row mt-2">
-                <div className="col-md-6">
+                <div className="col-md-4">
+                  <label className="labels">Mã sinh viên</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    {...register("code")}
+                    readOnly
+                  />
+                </div>
+                <div className="col-md-4">
                   <label className="labels">Tên</label>
                   <input
                     type="text"
@@ -66,7 +74,7 @@ export default function UserDetailStudent() {
                     readOnly
                   />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                   <label className="labels">Học và tên</label>
                   <input
                     type="text"
@@ -86,6 +94,7 @@ export default function UserDetailStudent() {
                     readOnly
                   />
                 </div>
+
                 <div className="col-md-12 mt-2">
                   <label className="labels">Địa chỉ</label>
                   <input
@@ -104,14 +113,16 @@ export default function UserDetailStudent() {
                     readOnly
                   />
                 </div>
+                <div className="col-md-12 mt-2">
+                  <label className="labels">Bộ môn</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    {...register("subjectName")}
+                    readOnly
+                  />
+                </div>
                 <div className="col-12 text-end mt-2 ms-2">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-10px me-1"
-                    onClick={handleClickOpenTution}
-                  >
-                    Học Phí
-                  </button>
                   <button
                     type="submit"
                     className="btn btn-secondary me-2"

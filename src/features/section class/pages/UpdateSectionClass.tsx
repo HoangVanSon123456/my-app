@@ -59,7 +59,7 @@ export default function UpdateSectionCLass() {
   }, []);
 
   const getListUsers = async () => {
-    await UserService.getListTeacher()
+    await UserService.getListTeacherClass()
       .then((res) => {
         setListUsers(res);
       })

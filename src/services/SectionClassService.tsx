@@ -31,7 +31,7 @@ const getSectionClassByEdu = async (id: number) => {
 };
 
 const searchSectionClass = async (keyword: string) => {
-  const { data } = await http.get(`/admin/sectionClass/search/${keyword}`);
+  const { data } = await http.get(`/admin/studyscore/search/${keyword}`);
   return data;
 };
 

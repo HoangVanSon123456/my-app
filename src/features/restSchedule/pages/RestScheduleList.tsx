@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import restScheduleService from "services/RestScheduleService";
 import RestSchedule from "types/RestSchedule";
 import ListRestSchedule from "../components/ListRestSchedule";
+import SearchRestScheduleForm from "../components/SearchRestScheduleForm";
 
 export default function RestScheduleList() {
   const [listRestSchedule, setRestScheduleList] = useState<RestSchedule[]>([]);
@@ -46,6 +47,20 @@ export default function RestScheduleList() {
       setShow(false);
     }
   };
+
+  const handleSearch = async (keyword: string) => {
+    await restScheduleService
+      .searchSRestSchedule(keyword)
+      .then((res) => {
+        console.log(res);
+        setRestScheduleList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleReset = () => {
+    getRestSchedule();
+  };
   return (
     <>
       <div className="content-header row">
@@ -83,10 +98,10 @@ export default function RestScheduleList() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            {/* <SearchTeacherForm
+            <SearchRestScheduleForm
               handleSearch={handleSearch}
               handleReset={handleReset}
-            /> */}
+            />
             <div className="card">
               <ListRestSchedule
                 listRestSchedule={listRestSchedule}

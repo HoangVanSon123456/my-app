@@ -10,15 +10,6 @@ const getList = async () => {
   return data;
 };
 
-// const create = async (data: StudyScore) => {
-//   await http.post("/admin/studyscore/add", data, {
-//     headers: {
-//       userId: localStorage.getItem("userId"),
-//     },
-//   });
-//   return data;
-// };
-
 const deleteItem = async (id: number) => {
   const { data } = await http.delete(`/admin/studyscore/delete/${id}`);
   return data;
@@ -49,11 +40,16 @@ const createStudyScoreBySectionClass = async (data: StudyScore) => {
   return data;
 };
 
+const searchStudyScore = async (keyword: string) => {
+  const { data } = await http.get(`/admin/studyscore/search/${keyword}`);
+  return data;
+};
+
 const StudyScoreService = {
+  searchStudyScore,
   createStudyScoreBySectionClass,
   getStudyScoreBySectionClass,
   getList,
-  // create,
   deleteItem,
   update,
   getById,

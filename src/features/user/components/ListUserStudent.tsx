@@ -60,7 +60,7 @@ export default function ListUserStudent({ listUsers, handleDelete }: IProps) {
       <tbody>
         {listUsers.map((item: User, index: number) => (
           <tr key={item.id}>
-            <th className="text-center">{item.id}</th>
+            <th className="text-center">{index + 1}</th>
             <td className="text-center">{item?.code}</td>
             <td className="text-center">{item?.name}</td>
             <td className="text-center">{item?.useName}</td>

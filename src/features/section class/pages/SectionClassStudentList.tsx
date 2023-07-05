@@ -6,6 +6,10 @@ import ModalConfirm from "components/layout/ModalConfirm";
 import SearchGiaoVien from "features/user/components/SearchStudentForm";
 import StudyScoreService from "services/StudyScoreService";
 import StudyScore from "types/StudyScore";
+import SearchStudentForm from "features/user/components/SearchStudentForm";
+import TuitionService from "services/TuitionService";
+import SearchSectionClassStudentForm from "../components/SearchSectionClassStudentForm";
+import SectionClassService from "services/SectionClassService";
 
 export default function SectionClassStudentList() {
   const [listStudyScore, setStudyScoreList] = useState<StudyScore[]>([]);
@@ -51,8 +55,9 @@ export default function SectionClassStudentList() {
   };
 
   const handleSearch = async (keyword: string) => {
-    await UserService.searchUser(keyword)
+    await SectionClassService.searchSectionClass(keyword)
       .then((res) => {
+        console.log(res);
         setStudyScoreList(res);
       })
       .catch((err) => console.log(err));
@@ -101,7 +106,7 @@ export default function SectionClassStudentList() {
       <div className="content-body">
         <div className="row">
           <div className="col-12">
-            <SearchGiaoVien
+            <SearchSectionClassStudentForm
               handleSearch={handleSearch}
               handleReset={handleReset}
             />

@@ -25,7 +25,13 @@ const getById = async (id: number) => {
   return data;
 };
 
+const searchAcademic = async (keyword: string) => {
+  const { data } = await http.get(`/admin/academic/search/${keyword}`);
+  return data;
+};
+
 const AcademicService = {
+  searchAcademic,
   getList,
   create,
   deleteItem,

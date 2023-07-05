@@ -5,10 +5,16 @@ import * as Yup from "yup";
 import UserService from "services/UserService";
 import User from "types/User";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Eye, EyeOff } from "react-feather";
+import Position from "types/Position";
+import positionService from "services/PositionService";
+import SubjectService from "services/SubjectService";
+import Subject from "types/Subject";
 
 export default function CreateStudent() {
+  const [listPosition, setPositionList] = useState<Position[]>([]);
+  const [listSubject, setSubjectList] = useState<Subject[]>([]);
   const [showPass, setShowPass] = useState(false);
   const [loadingUpdate, setLoadingUpdate] = useState(false);
   const navigate = useNavigate();
@@ -33,6 +39,31 @@ export default function CreateStudent() {
   } = useForm({
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    getListPosition();
+  }, []);
+
+  const getListPosition = async () => {
+    await positionService
+      .getList()
+      .then((res) => {
+        setPositionList(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    getListSubject();
+  }, []);
+
+  const getListSubject = async () => {
+    await SubjectService.getList()
+      .then((res) => {
+        setSubjectList(res);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const saveUserTeacher = (data: User) => {
     setLoadingUpdate(true);
@@ -174,7 +205,32 @@ export default function CreateStudent() {
             {...register("age")}
           />
         </div>
-
+        <div className="col-md-4">
+          <label htmlFor="age" className="form-label d-block text-start">
+            Chức vụ
+          </label>
+          <select {...register("positionId")} className="form-select">
+            <option value={0}>--</option>
+            {listPosition.map((la) => (
+              <option key={la.id} value={la.id}>
+                {la.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="col-md-4">
+          <label htmlFor="age" className="form-label d-block text-start">
+            Bộ môn
+          </label>
+          <select {...register("subjectId")} className="form-select">
+            <option value={0}>--</option>
+            {listSubject.map((la) => (
+              <option key={la.id} value={la.id}>
+                {la.name}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="col-12 text-end">
           <button type="submit" className="btn btn-primary me-2">
             Lưu
