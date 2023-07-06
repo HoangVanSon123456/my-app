@@ -54,7 +54,7 @@ export default function EditStudent() {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/SinhVien");
   };
 
   return (

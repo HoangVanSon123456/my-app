@@ -130,7 +130,7 @@ export default function Header() {
         <div className="navbar-header">
           <ul className="nav navbar-nav flex-row">
             <li className="nav-item me-auto">
-              <a className="navbar-brand" href="/GiaoVien">
+              <a className="navbar-brand" href="/trangchu">
                 <h2 className="brand-text ms-1">Quản Lý Điểm</h2>
               </a>
             </li>

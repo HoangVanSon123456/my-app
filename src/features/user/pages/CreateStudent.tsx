@@ -78,7 +78,7 @@ export default function CreateStudent() {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/SinhVien");
   };
   return (
     <div className="card">

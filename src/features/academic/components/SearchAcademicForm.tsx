@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import SearchSectionClass from "../types";
+import SearchAcademic from "../types";
 
 interface IProps {
   handleSearch: Function;
@@ -17,7 +18,7 @@ export default function SearchAcademicForm({
 }: IProps) {
   const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = (data: SearchSectionClass) => {
+  const onSubmit = (data: SearchAcademic) => {
     handleSearch(data.code);
     console.log(data.code);
   };

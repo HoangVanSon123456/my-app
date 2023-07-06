@@ -96,8 +96,8 @@ export default function SuaTuition() {
               className="form-select"
               aria-label="Default select example"
             >
-              <option value="chuadong">Chứ đóng học phí</option>
-              <option value="dong">Đã đóng học phí</option>
+              <option value="Chứ đóng học phí">Chưa đóng học phí</option>
+              <option value="Đã đóng học phí">Đã đóng học phí</option>
             </select>
           </div>
           <div className="col-md-4">

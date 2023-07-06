@@ -87,7 +87,7 @@ export default function EditTeacher() {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/GiaoVien");
   };
 
   return (
